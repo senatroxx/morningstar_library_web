@@ -78,9 +78,8 @@
                         </nav>
                     </div>
                     <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
-                        <a href="download.html"
-                            class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 py-3 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white">
-                            Download
+                        <a href="" class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 py-3 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white">
+                            Sign Up
                         </a>
                     </div>
                 </div>
