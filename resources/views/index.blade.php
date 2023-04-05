@@ -15,61 +15,62 @@
 <body>
 
     <!-- ====== Navbar Section Start -->
-    <div class="ud-header absolute top-0 left-0 z-40 flex w-full items-center bg-primary">
+    <div class="ud-header bg-primary absolute left-0 top-0 z-40 flex w-full items-center">
         <div class="container">
             <div class="relative -mx-4 flex items-center justify-between">
                 <div class="w-60 max-w-full px-4">
-                    <a href="index.html" class="navbar-logo block w-full py-5">
-                        <img src={{ asset('images/logo/logo.png') }} alt="logo" class="header-logo w-full" />
+                    <a class="navbar-logo block w-full py-5" href="index.html">
+                        <img class="header-logo w-full" src={{ asset('images/logo/logo.png') }} alt="logo" />
                     </a>
                 </div>
                 <div class="flex w-full items-center justify-end px-4">
                     <div>
-                        <button id="navbarToggler"
-                            class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden">
+                        <button
+                            class="ring-primary absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
+                            id="navbarToggler">
                             <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
                             <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
                             <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
                         </button>
-                        <nav id="navbarCollapse"
-                            class="absolute right-4 top-full hidden w-full max-w-[250px] justify-self-center rounded-lg bg-slate-900 py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
+                        <nav class="absolute right-4 top-full hidden w-full max-w-[250px] justify-self-center rounded-lg bg-slate-900 py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none xl:px-6"
+                            id="navbarCollapse">
                             <ul class="block lg:flex">
                                 <li class="group relative">
-                                    <a href="#home"
-                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-white group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
+                                    <a class="ud-menu-scroll group-hover:text-primary mx-8 flex py-2 text-base text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70"
+                                        href="#home">
                                         Home
                                     </a>
                                 </li>
                                 <li class="group relative">
-                                    <a href="#feature"
-                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-white group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
+                                    <a class="ud-menu-scroll group-hover:text-primary mx-8 flex py-2 text-base text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70"
+                                        href="#feature">
                                         Feature
                                     </a>
                                 </li>
                                 <li class="group relative">
-                                    <a href="#about"
-                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
+                                    <a class="ud-menu-scroll group-hover:text-primary mx-8 flex py-2 text-base text-white lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12"
+                                        href="#about">
                                         About
                                     </a>
                                 </li>
 
                                 <li class="group relative">
-                                    <a href="#team"
-                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
+                                    <a class="ud-menu-scroll group-hover:text-primary mx-8 flex py-2 text-base text-white lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12"
+                                        href="#team">
                                         Team
                                     </a>
                                 </li>
 
                                 <li class="group relative">
-                                    <a href="#testimonials"
-                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
+                                    <a class="ud-menu-scroll group-hover:text-primary mx-8 flex py-2 text-base text-white lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12"
+                                        href="#testimonials">
                                         Testimonials
                                     </a>
                                 </li>
 
                                 <li class="group relative">
-                                    <a href="#faq"
-                                        class="ud-menu-scroll mx-8 flex py-2 text-base text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
+                                    <a class="ud-menu-scroll group-hover:text-primary mx-8 flex py-2 text-base text-white lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12"
+                                        href="#faq">
                                         FAQ
                                     </a>
                                 </li>
@@ -78,9 +79,28 @@
                         </nav>
                     </div>
                     <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
-                        <a href="" class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 py-3 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white">
+
+                        @guest('user') @guest('admin')
+                        <a class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white"
+                            href={{ route('register') }}>
                             Sign Up
                         </a>
+                        @endguest @endguest
+
+                        @auth('user')
+                            <a class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white"
+                                href="#">
+                                {{ Auth::guard('user')->user()->name }}
+                            </a>
+                        @endauth
+
+                        @auth('admin')
+                            <a class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white"
+                                href={{ route('admin.index') }}>
+                                Dashboard
+                            </a>
+                        @endauth
+
                     </div>
                 </div>
             </div>
@@ -89,7 +109,7 @@
     <!-- ====== Navbar Section End -->
 
     <!-- ====== Hero Section Start -->
-    <div id="home" class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]">
+    <div class="bg-primary relative overflow-hidden pt-[120px] md:pt-[130px] lg:pt-[160px]" id="home">
         <div class="container">
             <div class="-mx-4 flex flex-wrap items-center">
                 <div class="w-full px-4">
@@ -104,17 +124,17 @@
                         </p>
                         <ul class="flex flex-wrap items-center justify-center">
                             <li>
-                                <a href="download.html"
-                                    class="inline-flex items-center justify-center rounded-lg bg-slate-900 py-4 px-6 text-center text-base font-medium text-white transition duration-300 ease-in-out hover:text-primary hover:shadow-lg sm:px-10">
+                                <a class="hover:text-primary inline-flex items-center justify-center rounded-lg bg-slate-900 px-6 py-4 text-center text-base font-medium text-white transition duration-300 ease-in-out hover:shadow-lg sm:px-10"
+                                    href="download.html">
                                     Download Now
                                 </a>
                             </li>
                             <li>
-                                <a href="https://github.com/senatroxx/morningstar_library/" target="_blank"
-                                    class="flex items-center py-4 px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:opacity-70 sm:px-10">
+                                <a class="flex items-center px-6 py-4 text-base font-medium text-white transition duration-300 ease-in-out hover:opacity-70 sm:px-10"
+                                    href="https://github.com/senatroxx/morningstar_library/" target="_blank">
                                     Star on Github
                                     <span class="pl-2">
-                                        <svg width="20" height="8" viewBox="0 0 20 8" class="fill-current">
+                                        <svg class="fill-current" width="20" height="8" viewBox="0 0 20 8">
                                             <path
                                                 d="M19.2188 2.90632L17.0625 0.343819C16.875 0.125069 16.5312 0.0938193 16.2812 0.281319C16.0625 0.468819 16.0312 0.812569 16.2188 1.06257L18.25 3.46882H0.9375C0.625 3.46882 0.375 3.71882 0.375 4.03132C0.375 4.34382 0.625 4.59382 0.9375 4.59382H18.25L16.2188 7.00007C16.0312 7.21882 16.0625 7.56257 16.2812 7.78132C16.375 7.87507 16.5 7.90632 16.625 7.90632C16.7812 7.90632 16.9375 7.84382 17.0312 7.71882L19.1875 5.15632C19.75 4.46882 19.75 3.53132 19.2188 2.90632Z" />
                                         </svg>
@@ -128,10 +148,10 @@
                 <div class="w-full px-4">
                     <div class="wow fadeInUp relative z-10 mx-auto max-w-[845px]" data-wow-delay=".25s">
                         <div class="mt-16">
-                            <img src={{ asset('images/hero/hero-image.jpg') }} alt="hero"
-                                class="mx-auto max-w-full rounded-t-xl rounded-tr-xl" />
+                            <img class="mx-auto max-w-full rounded-t-xl rounded-tr-xl"
+                                src={{ asset('images/hero/hero-image.jpg') }} alt="hero" />
                         </div>
-                        <div class="absolute bottom-0 -left-9 z-[-1]">
+                        <div class="absolute -left-9 bottom-0 z-[-1]">
                             <svg width="134" height="106" viewBox="0 0 134 106" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="1.66667" cy="104" r="1.66667" transform="rotate(-90 1.66667 104)"
@@ -296,7 +316,7 @@
                                     transform="rotate(-90 132 1.66707)" fill="#0f172a" />
                             </svg>
                         </div>
-                        <div class="absolute -top-6 -right-6 z-[-1]">
+                        <div class="absolute -right-6 -top-6 z-[-1]">
                             <svg width="134" height="106" viewBox="0 0 134 106" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="1.66667" cy="104" r="1.66667"
@@ -469,18 +489,18 @@
     <!-- ====== Hero Section End -->
 
     <!-- ====== Features Section Start -->
-    <section class="bg-slate-900 pt-20 pb-8 lg:pt-[120px] lg:pb-[70px]" id="feature">
+    <section class="bg-slate-900 pb-8 pt-20 lg:pb-[70px] lg:pt-[120px]" id="feature">
         <div class="container">
             <div class="-mx-4 flex flex-wrap">
                 <div class="w-full px-4">
                     <div class="mb-12 max-w-[620px] lg:mb-20">
-                        <span class="mb-2 block text-lg font-semibold text-primary">
+                        <span class="text-primary mb-2 block text-lg font-semibold">
                             Features
                         </span>
                         <h2 class="mb-4 text-3xl font-bold text-gray-100 sm:text-4xl md:text-[42px]">
                             Main Features Of Morningstar Library
                         </h2>
-                        <p class="text-lg leading-relaxed text-body-color sm:text-xl sm:leading-relaxed">
+                        <p class="text-body-color text-lg leading-relaxed sm:text-xl sm:leading-relaxed">
                             There are many features of Morningstar Library. But the most
                             important features are given below.
                         </p>
@@ -491,9 +511,9 @@
                 <div class="w-full px-4 md:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp group mb-12 bg-slate-900" data-wow-delay=".1s">
                         <div
-                            class="relative z-10 mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-primary">
+                            class="bg-primary relative z-10 mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl">
                             <span
-                                class="absolute top-0 left-0 z-[-1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-2xl bg-primary bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+                                class="bg-primary absolute left-0 top-0 z-[-1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-2xl bg-opacity-20 duration-300 group-hover:rotate-45"></span>
                             <svg width="35" height="35" viewBox="0 0 52 52" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -504,7 +524,7 @@
                         <h4 class="mb-3 text-xl font-bold text-gray-100">
                             Free and Open-Source
                         </h4>
-                        <p class="mb-8 text-body-color lg:mb-11">
+                        <p class="text-body-color mb-8 lg:mb-11">
                             Morningstar Library is free and open-source. You can use it
                             without any cost.
                         </p>
@@ -514,9 +534,9 @@
                 <div class="w-full px-4 md:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp group mb-12 bg-slate-900" data-wow-delay=".15s">
                         <div
-                            class="relative z-10 mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-primary">
+                            class="bg-primary relative z-10 mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl">
                             <span
-                                class="absolute top-0 left-0 z-[-1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-2xl bg-primary bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+                                class="bg-primary absolute left-0 top-0 z-[-1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-2xl bg-opacity-20 duration-300 group-hover:rotate-45"></span>
                             <svg width="35" height="35" viewBox="0 0 52 52" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -527,7 +547,7 @@
                         <h4 class="mb-3 text-xl font-bold text-gray-100">
                             1000+ Books
                         </h4>
-                        <p class="mb-8 text-body-color lg:mb-11">
+                        <p class="text-body-color mb-8 lg:mb-11">
                             There are more than 1000 books in Morningstar Library . You can
                             browse them all.
                         </p>
@@ -537,9 +557,9 @@
                 <div class="w-full px-4 md:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp group mb-12 bg-slate-900" data-wow-delay=".2s">
                         <div
-                            class="relative z-10 mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-primary">
+                            class="bg-primary relative z-10 mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl">
                             <span
-                                class="absolute top-0 left-0 z-[-1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-2xl bg-primary bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+                                class="bg-primary absolute left-0 top-0 z-[-1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-2xl bg-opacity-20 duration-300 group-hover:rotate-45"></span>
                             <svg width="35" height="35" viewBox="0 0 35 35" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -559,7 +579,7 @@
                         <h4 class="mb-3 text-xl font-bold text-gray-100">
                             Multi Platform
                         </h4>
-                        <p class="mb-8 text-body-color lg:mb-11">
+                        <p class="text-body-color mb-8 lg:mb-11">
                             Morningstar Library is available on windows, mac, and linux.
                         </p>
                     </div>
@@ -567,9 +587,9 @@
                 <div class="w-full px-4 md:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp group mb-12 bg-slate-900" data-wow-delay=".25s">
                         <div
-                            class="relative z-10 mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-primary">
+                            class="bg-primary relative z-10 mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl">
                             <span
-                                class="absolute top-0 left-0 z-[-1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-2xl bg-primary bg-opacity-20 duration-300 group-hover:rotate-45"></span>
+                                class="bg-primary absolute left-0 top-0 z-[-1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-2xl bg-opacity-20 duration-300 group-hover:rotate-45"></span>
                             <svg width="35" height="35" viewBox="0 0 35 35" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -580,7 +600,7 @@
                         <h4 class="mb-3 text-xl font-bold text-gray-100">
                             Tailwind based colors.
                         </h4>
-                        <p class="mb-8 text-body-color lg:mb-11">
+                        <p class="text-body-color mb-8 lg:mb-11">
                             We use Tailwind CSS for colors.
                         </p>
 
@@ -592,28 +612,28 @@
     <!-- ====== Features Section End -->
 
     <!-- ====== About Section Start -->
-    <section id="about" class="bg-slate-800 pt-20 pb-20 lg:pt-[120px] lg:pb-[120px]">
+    <section class="bg-slate-800 pb-20 pt-20 lg:pb-[120px] lg:pt-[120px]" id="about">
         <div class="container">
             <div class="wow fadeInUp bg-slate-900" data-wow-delay=".2s">
                 <div class="-mx-4 flex flex-wrap">
                     <div class="w-full px-4">
                         <div class="items-center justify-between overflow-hidden rounded lg:flex">
                             <div
-                                class="w-full py-12 px-7 sm:px-12 md:p-16 lg:max-w-[565px] lg:py-9 lg:px-16 xl:max-w-[640px] xl:p-[70px]">
-                                <span class="mb-5 inline-block bg-primary py-2 px-5 text-sm font-medium text-white">
+                                class="w-full px-7 py-12 sm:px-12 md:p-16 lg:max-w-[565px] lg:px-16 lg:py-9 xl:max-w-[640px] xl:p-[70px]">
+                                <span class="bg-primary mb-5 inline-block px-5 py-2 text-sm font-medium text-white">
                                     Admin Page
                                 </span>
                                 <h2
                                     class="mb-6 text-3xl font-bold text-gray-100 sm:text-4xl sm:leading-snug 2xl:text-[40px]">
                                     Control all contents on application from the Admin panel.
                                 </h2>
-                                <p class="mb-9 text-base leading-relaxed text-body-color">
+                                <p class="text-body-color mb-9 text-base leading-relaxed">
                                     The library application's admin panel is a feature that allows
                                     authorized personnel to manage the library's resources and information.
                                     It provides tools for adding, editing, and deleting books, as well as
                                     managing users and checking out materials.
                                 </p>
-                                <p class="mb-9 text-base leading-relaxed text-body-color">
+                                <p class="text-body-color mb-9 text-base leading-relaxed">
                                     The panel also allows administrators to generate reports and track
                                     the usage of the library's resources. It is a user-friendly interface
                                     that makes it easy for administrators to maintain the library's database
@@ -622,8 +642,8 @@
                             </div>
                             <div class="text-center">
                                 <div class="relative z-10 inline-block">
-                                    <img src={{ asset('images/about/about-image.png') }} alt="image"
-                                        class="mx-auto lg:ml-auto" />
+                                    <img class="mx-auto lg:ml-auto" src={{ asset('images/about/about-image.png') }}
+                                        alt="image" />
                                 </div>
                             </div>
                         </div>
@@ -635,18 +655,18 @@
     <!-- ====== About Section End -->
 
     <!-- ====== Team Section Start -->
-    <section id="team" class="bg-slate-900 pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+    <section class="bg-slate-900 pb-10 pt-20 lg:pb-20 lg:pt-[120px]" id="team">
         <div class="container">
             <div class="-mx-4 flex flex-wrap">
                 <div class="w-full px-4">
                     <div class="mx-auto mb-[60px] max-w-[620px] text-center">
-                        <span class="mb-2 block text-lg font-semibold text-primary">
+                        <span class="text-primary mb-2 block text-lg font-semibold">
                             Our Team
                         </span>
                         <h2 class="mb-4 text-3xl font-bold text-gray-100 sm:text-4xl md:text-[42px]">
                             Meet Our Team
                         </h2>
-                        <p class="text-lg leading-relaxed text-body-color sm:text-xl sm:leading-relaxed">
+                        <p class="text-body-color text-lg leading-relaxed sm:text-xl sm:leading-relaxed">
                             We are team of five people who are passionate about creating
                             beautiful and functional application.
                         </p>
@@ -658,8 +678,9 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".1s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src={{ asset('images/team/athhar.jpg') }} alt="image" class="w-full rounded-full" />
-                            <span class="absolute top-0 left-0 z-[-1]">
+                            <img class="w-full rounded-full" src={{ asset('images/team/athhar.jpg') }}
+                                alt="image" />
+                            <span class="absolute left-0 top-0 z-[-1]">
                                 <svg width="71" height="82" viewBox="0 0 71 82" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="1.29337" cy="80.7066" r="1.29337"
@@ -776,7 +797,7 @@
                                         transform="rotate(-90 57.9443 1.29354)" fill="#3056D3" />
                                 </svg>
                             </span>
-                            <span class="absolute right-0 bottom-0">
+                            <span class="absolute bottom-0 right-0">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -789,27 +810,27 @@
                             <h4 class="mb-2 text-lg font-medium text-gray-100">
                                 Athhar Kautsar
                             </h4>
-                            <p class="mb-5 text-sm font-medium text-body-color">
+                            <p class="text-body-color mb-5 text-sm font-medium">
                                 Programmer
                             </p>
                             <div class="flex items-center justify-center">
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="10" height="18" viewBox="0 0 10 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="10" height="18" viewBox="0 0 10 18">
                                         <path
                                             d="M9.29878 7.2H7.74898H7.19548V6.61935V4.81936V4.23871H7.74898H8.91133C9.21575 4.23871 9.46483 4.00645 9.46483 3.65806V0.580645C9.46483 0.26129 9.24343 0 8.91133 0H6.89106C4.70474 0 3.18262 1.62581 3.18262 4.03548V6.56129V7.14194H2.62912H0.747223C0.359774 7.14194 0 7.46129 0 7.92581V10.0161C0 10.4226 0.304424 10.8 0.747223 10.8H2.57377H3.12727V11.3806V17.2161C3.12727 17.6226 3.43169 18 3.87449 18H6.47593C6.64198 18 6.78036 17.9129 6.89106 17.7968C7.00176 17.6806 7.08478 17.4774 7.08478 17.3032V11.4097V10.829H7.66596H8.91133C9.2711 10.829 9.54785 10.5968 9.6032 10.2484V10.2194V10.1903L9.99065 8.1871C10.0183 7.98387 9.99065 7.75161 9.8246 7.51935C9.76925 7.37419 9.52018 7.22903 9.29878 7.2Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="14" viewBox="0 0 18 14">
                                         <path
                                             d="M15.9968 2.41096L17.1 1.09589C17.4194 0.739726 17.5065 0.465753 17.5355 0.328767C16.6645 0.821918 15.8516 0.986301 15.329 0.986301H15.1258L15.0097 0.876712C14.3129 0.30137 13.4419 0 12.5129 0C10.4806 0 8.88387 1.58904 8.88387 3.42466C8.88387 3.53425 8.88387 3.69863 8.9129 3.80822L9 4.35616L8.39032 4.32877C4.67419 4.21918 1.62581 1.20548 1.13226 0.684932C0.319355 2.05479 0.783871 3.36986 1.27742 4.19178L2.26452 5.72603L0.696774 4.90411C0.725806 6.05479 1.19032 6.9589 2.09032 7.61644L2.87419 8.16438L2.09032 8.46575C2.58387 9.86301 3.6871 10.4384 4.5 10.6575L5.57419 10.9315L4.55806 11.589C2.93226 12.6849 0.9 12.6027 0 12.5205C1.82903 13.726 4.00645 14 5.51613 14C6.64839 14 7.49032 13.8904 7.69355 13.8082C15.8226 12 16.2 5.15068 16.2 3.78082V3.58904L16.3742 3.47945C17.3613 2.60274 17.7677 2.13699 18 1.86301C17.9129 1.89041 17.7968 1.94521 17.6806 1.9726L15.9968 2.41096Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18">
                                         <path
                                             d="M8.90245 12.1939C10.7363 12.1939 12.2229 10.7073 12.2229 8.87352C12.2229 7.0397 10.7363 5.5531 8.90245 5.5531C7.06863 5.5531 5.58203 7.0397 5.58203 8.87352C5.58203 10.7073 7.06863 12.1939 8.90245 12.1939Z" />
                                         <path
@@ -825,8 +846,9 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".15s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src={{ asset('images/team/leon.jpg') }} alt="image" class="w-full rounded-full" />
-                            <span class="absolute top-0 left-0 z-[-1]">
+                            <img class="w-full rounded-full" src={{ asset('images/team/leon.jpg') }}
+                                alt="image" />
+                            <span class="absolute left-0 top-0 z-[-1]">
                                 <svg width="71" height="82" viewBox="0 0 71 82" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="1.29337" cy="80.7066" r="1.29337"
@@ -943,7 +965,7 @@
                                         transform="rotate(-90 57.9443 1.29354)" fill="#3056D3" />
                                 </svg>
                             </span>
-                            <span class="absolute right-0 bottom-0">
+                            <span class="absolute bottom-0 right-0">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -956,27 +978,27 @@
                             <h4 class="mb-2 text-lg font-medium text-gray-100">
                                 Leon Fadilah
                             </h4>
-                            <p class="mb-5 text-sm font-medium text-body-color">
+                            <p class="text-body-color mb-5 text-sm font-medium">
                                 Copywriter
                             </p>
                             <div class="flex items-center justify-center">
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="10" height="18" viewBox="0 0 10 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="10" height="18" viewBox="0 0 10 18">
                                         <path
                                             d="M9.29878 7.2H7.74898H7.19548V6.61935V4.81936V4.23871H7.74898H8.91133C9.21575 4.23871 9.46483 4.00645 9.46483 3.65806V0.580645C9.46483 0.26129 9.24343 0 8.91133 0H6.89106C4.70474 0 3.18262 1.62581 3.18262 4.03548V6.56129V7.14194H2.62912H0.747223C0.359774 7.14194 0 7.46129 0 7.92581V10.0161C0 10.4226 0.304424 10.8 0.747223 10.8H2.57377H3.12727V11.3806V17.2161C3.12727 17.6226 3.43169 18 3.87449 18H6.47593C6.64198 18 6.78036 17.9129 6.89106 17.7968C7.00176 17.6806 7.08478 17.4774 7.08478 17.3032V11.4097V10.829H7.66596H8.91133C9.2711 10.829 9.54785 10.5968 9.6032 10.2484V10.2194V10.1903L9.99065 8.1871C10.0183 7.98387 9.99065 7.75161 9.8246 7.51935C9.76925 7.37419 9.52018 7.22903 9.29878 7.2Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="14" viewBox="0 0 18 14">
                                         <path
                                             d="M15.9968 2.41096L17.1 1.09589C17.4194 0.739726 17.5065 0.465753 17.5355 0.328767C16.6645 0.821918 15.8516 0.986301 15.329 0.986301H15.1258L15.0097 0.876712C14.3129 0.30137 13.4419 0 12.5129 0C10.4806 0 8.88387 1.58904 8.88387 3.42466C8.88387 3.53425 8.88387 3.69863 8.9129 3.80822L9 4.35616L8.39032 4.32877C4.67419 4.21918 1.62581 1.20548 1.13226 0.684932C0.319355 2.05479 0.783871 3.36986 1.27742 4.19178L2.26452 5.72603L0.696774 4.90411C0.725806 6.05479 1.19032 6.9589 2.09032 7.61644L2.87419 8.16438L2.09032 8.46575C2.58387 9.86301 3.6871 10.4384 4.5 10.6575L5.57419 10.9315L4.55806 11.589C2.93226 12.6849 0.9 12.6027 0 12.5205C1.82903 13.726 4.00645 14 5.51613 14C6.64839 14 7.49032 13.8904 7.69355 13.8082C15.8226 12 16.2 5.15068 16.2 3.78082V3.58904L16.3742 3.47945C17.3613 2.60274 17.7677 2.13699 18 1.86301C17.9129 1.89041 17.7968 1.94521 17.6806 1.9726L15.9968 2.41096Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18">
                                         <path
                                             d="M8.90245 12.1939C10.7363 12.1939 12.2229 10.7073 12.2229 8.87352C12.2229 7.0397 10.7363 5.5531 8.90245 5.5531C7.06863 5.5531 5.58203 7.0397 5.58203 8.87352C5.58203 10.7073 7.06863 12.1939 8.90245 12.1939Z" />
                                         <path
@@ -992,8 +1014,9 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".2s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src={{ asset('images/team/ikams.png') }} alt="image" class="w-full rounded-full" />
-                            <span class="absolute top-0 left-0 z-[-1]">
+                            <img class="w-full rounded-full" src={{ asset('images/team/ikams.png') }}
+                                alt="image" />
+                            <span class="absolute left-0 top-0 z-[-1]">
                                 <svg width="71" height="82" viewBox="0 0 71 82" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="1.29337" cy="80.7066" r="1.29337"
@@ -1110,7 +1133,7 @@
                                         transform="rotate(-90 57.9443 1.29354)" fill="#3056D3" />
                                 </svg>
                             </span>
-                            <span class="absolute right-0 bottom-0">
+                            <span class="absolute bottom-0 right-0">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -1123,27 +1146,27 @@
                             <h4 class="mb-2 text-lg font-medium text-gray-100">
                                 Saidina Hikam
                             </h4>
-                            <p class="mb-5 text-sm font-medium text-body-color">
+                            <p class="text-body-color mb-5 text-sm font-medium">
                                 App Developer
                             </p>
                             <div class="flex items-center justify-center">
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="10" height="18" viewBox="0 0 10 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="10" height="18" viewBox="0 0 10 18">
                                         <path
                                             d="M9.29878 7.2H7.74898H7.19548V6.61935V4.81936V4.23871H7.74898H8.91133C9.21575 4.23871 9.46483 4.00645 9.46483 3.65806V0.580645C9.46483 0.26129 9.24343 0 8.91133 0H6.89106C4.70474 0 3.18262 1.62581 3.18262 4.03548V6.56129V7.14194H2.62912H0.747223C0.359774 7.14194 0 7.46129 0 7.92581V10.0161C0 10.4226 0.304424 10.8 0.747223 10.8H2.57377H3.12727V11.3806V17.2161C3.12727 17.6226 3.43169 18 3.87449 18H6.47593C6.64198 18 6.78036 17.9129 6.89106 17.7968C7.00176 17.6806 7.08478 17.4774 7.08478 17.3032V11.4097V10.829H7.66596H8.91133C9.2711 10.829 9.54785 10.5968 9.6032 10.2484V10.2194V10.1903L9.99065 8.1871C10.0183 7.98387 9.99065 7.75161 9.8246 7.51935C9.76925 7.37419 9.52018 7.22903 9.29878 7.2Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="14" viewBox="0 0 18 14">
                                         <path
                                             d="M15.9968 2.41096L17.1 1.09589C17.4194 0.739726 17.5065 0.465753 17.5355 0.328767C16.6645 0.821918 15.8516 0.986301 15.329 0.986301H15.1258L15.0097 0.876712C14.3129 0.30137 13.4419 0 12.5129 0C10.4806 0 8.88387 1.58904 8.88387 3.42466C8.88387 3.53425 8.88387 3.69863 8.9129 3.80822L9 4.35616L8.39032 4.32877C4.67419 4.21918 1.62581 1.20548 1.13226 0.684932C0.319355 2.05479 0.783871 3.36986 1.27742 4.19178L2.26452 5.72603L0.696774 4.90411C0.725806 6.05479 1.19032 6.9589 2.09032 7.61644L2.87419 8.16438L2.09032 8.46575C2.58387 9.86301 3.6871 10.4384 4.5 10.6575L5.57419 10.9315L4.55806 11.589C2.93226 12.6849 0.9 12.6027 0 12.5205C1.82903 13.726 4.00645 14 5.51613 14C6.64839 14 7.49032 13.8904 7.69355 13.8082C15.8226 12 16.2 5.15068 16.2 3.78082V3.58904L16.3742 3.47945C17.3613 2.60274 17.7677 2.13699 18 1.86301C17.9129 1.89041 17.7968 1.94521 17.6806 1.9726L15.9968 2.41096Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18">
                                         <path
                                             d="M8.90245 12.1939C10.7363 12.1939 12.2229 10.7073 12.2229 8.87352C12.2229 7.0397 10.7363 5.5531 8.90245 5.5531C7.06863 5.5531 5.58203 7.0397 5.58203 8.87352C5.58203 10.7073 7.06863 12.1939 8.90245 12.1939Z" />
                                         <path
@@ -1159,8 +1182,9 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".25s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src={{ asset('images/team/Sandy.jpg') }} alt="image" class="w-full rounded-full" />
-                            <span class="absolute top-0 left-0 z-[-1]">
+                            <img class="w-full rounded-full" src={{ asset('images/team/Sandy.jpg') }}
+                                alt="image" />
+                            <span class="absolute left-0 top-0 z-[-1]">
                                 <svg width="71" height="82" viewBox="0 0 71 82" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="1.29337" cy="80.7066" r="1.29337"
@@ -1277,7 +1301,7 @@
                                         transform="rotate(-90 57.9443 1.29354)" fill="#3056D3" />
                                 </svg>
                             </span>
-                            <span class="absolute right-0 bottom-0">
+                            <span class="absolute bottom-0 right-0">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -1290,27 +1314,27 @@
                             <h4 class="mb-2 text-lg font-medium text-gray-100">
                                 Sandy Budi Wirawan
                             </h4>
-                            <p class="mb-5 text-sm font-medium text-body-color">
+                            <p class="text-body-color mb-5 text-sm font-medium">
                                 UI/UX Designer
                             </p>
                             <div class="flex items-center justify-center">
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="10" height="18" viewBox="0 0 10 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="10" height="18" viewBox="0 0 10 18">
                                         <path
                                             d="M9.29878 7.2H7.74898H7.19548V6.61935V4.81936V4.23871H7.74898H8.91133C9.21575 4.23871 9.46483 4.00645 9.46483 3.65806V0.580645C9.46483 0.26129 9.24343 0 8.91133 0H6.89106C4.70474 0 3.18262 1.62581 3.18262 4.03548V6.56129V7.14194H2.62912H0.747223C0.359774 7.14194 0 7.46129 0 7.92581V10.0161C0 10.4226 0.304424 10.8 0.747223 10.8H2.57377H3.12727V11.3806V17.2161C3.12727 17.6226 3.43169 18 3.87449 18H6.47593C6.64198 18 6.78036 17.9129 6.89106 17.7968C7.00176 17.6806 7.08478 17.4774 7.08478 17.3032V11.4097V10.829H7.66596H8.91133C9.2711 10.829 9.54785 10.5968 9.6032 10.2484V10.2194V10.1903L9.99065 8.1871C10.0183 7.98387 9.99065 7.75161 9.8246 7.51935C9.76925 7.37419 9.52018 7.22903 9.29878 7.2Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="14" viewBox="0 0 18 14">
                                         <path
                                             d="M15.9968 2.41096L17.1 1.09589C17.4194 0.739726 17.5065 0.465753 17.5355 0.328767C16.6645 0.821918 15.8516 0.986301 15.329 0.986301H15.1258L15.0097 0.876712C14.3129 0.30137 13.4419 0 12.5129 0C10.4806 0 8.88387 1.58904 8.88387 3.42466C8.88387 3.53425 8.88387 3.69863 8.9129 3.80822L9 4.35616L8.39032 4.32877C4.67419 4.21918 1.62581 1.20548 1.13226 0.684932C0.319355 2.05479 0.783871 3.36986 1.27742 4.19178L2.26452 5.72603L0.696774 4.90411C0.725806 6.05479 1.19032 6.9589 2.09032 7.61644L2.87419 8.16438L2.09032 8.46575C2.58387 9.86301 3.6871 10.4384 4.5 10.6575L5.57419 10.9315L4.55806 11.589C2.93226 12.6849 0.9 12.6027 0 12.5205C1.82903 13.726 4.00645 14 5.51613 14C6.64839 14 7.49032 13.8904 7.69355 13.8082C15.8226 12 16.2 5.15068 16.2 3.78082V3.58904L16.3742 3.47945C17.3613 2.60274 17.7677 2.13699 18 1.86301C17.9129 1.89041 17.7968 1.94521 17.6806 1.9726L15.9968 2.41096Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18">
                                         <path
                                             d="M8.90245 12.1939C10.7363 12.1939 12.2229 10.7073 12.2229 8.87352C12.2229 7.0397 10.7363 5.5531 8.90245 5.5531C7.06863 5.5531 5.58203 7.0397 5.58203 8.87352C5.58203 10.7073 7.06863 12.1939 8.90245 12.1939Z" />
                                         <path
@@ -1326,8 +1350,9 @@
                 <div class="w-full px-4 sm:w-1/2 lg:w-1/4">
                     <div class="wow fadeInUp mb-10" data-wow-delay=".25s">
                         <div class="h-170px] relative z-10 mx-auto mb-6 w-[170px] rounded-full">
-                            <img src={{ asset('images/team/imam.jpg') }} alt="image" class="w-full rounded-full" />
-                            <span class="absolute top-0 left-0 z-[-1]">
+                            <img class="w-full rounded-full" src={{ asset('images/team/imam.jpg') }}
+                                alt="image" />
+                            <span class="absolute left-0 top-0 z-[-1]">
                                 <svg width="71" height="82" viewBox="0 0 71 82" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="1.29337" cy="80.7066" r="1.29337"
@@ -1444,7 +1469,7 @@
                                         transform="rotate(-90 57.9443 1.29354)" fill="#3056D3" />
                                 </svg>
                             </span>
-                            <span class="absolute right-0 bottom-0">
+                            <span class="absolute bottom-0 right-0">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -1457,27 +1482,27 @@
                             <h4 class="mb-2 text-lg font-medium text-gray-100">
                                 Imam Fahrudin
                             </h4>
-                            <p class="mb-5 text-sm font-medium text-body-color">
+                            <p class="text-body-color mb-5 text-sm font-medium">
                                 Programmer
                             </p>
                             <div class="flex items-center justify-center">
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="10" height="18" viewBox="0 0 10 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="10" height="18" viewBox="0 0 10 18">
                                         <path
                                             d="M9.29878 7.2H7.74898H7.19548V6.61935V4.81936V4.23871H7.74898H8.91133C9.21575 4.23871 9.46483 4.00645 9.46483 3.65806V0.580645C9.46483 0.26129 9.24343 0 8.91133 0H6.89106C4.70474 0 3.18262 1.62581 3.18262 4.03548V6.56129V7.14194H2.62912H0.747223C0.359774 7.14194 0 7.46129 0 7.92581V10.0161C0 10.4226 0.304424 10.8 0.747223 10.8H2.57377H3.12727V11.3806V17.2161C3.12727 17.6226 3.43169 18 3.87449 18H6.47593C6.64198 18 6.78036 17.9129 6.89106 17.7968C7.00176 17.6806 7.08478 17.4774 7.08478 17.3032V11.4097V10.829H7.66596H8.91133C9.2711 10.829 9.54785 10.5968 9.6032 10.2484V10.2194V10.1903L9.99065 8.1871C10.0183 7.98387 9.99065 7.75161 9.8246 7.51935C9.76925 7.37419 9.52018 7.22903 9.29878 7.2Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="14" viewBox="0 0 18 14" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="14" viewBox="0 0 18 14">
                                         <path
                                             d="M15.9968 2.41096L17.1 1.09589C17.4194 0.739726 17.5065 0.465753 17.5355 0.328767C16.6645 0.821918 15.8516 0.986301 15.329 0.986301H15.1258L15.0097 0.876712C14.3129 0.30137 13.4419 0 12.5129 0C10.4806 0 8.88387 1.58904 8.88387 3.42466C8.88387 3.53425 8.88387 3.69863 8.9129 3.80822L9 4.35616L8.39032 4.32877C4.67419 4.21918 1.62581 1.20548 1.13226 0.684932C0.319355 2.05479 0.783871 3.36986 1.27742 4.19178L2.26452 5.72603L0.696774 4.90411C0.725806 6.05479 1.19032 6.9589 2.09032 7.61644L2.87419 8.16438L2.09032 8.46575C2.58387 9.86301 3.6871 10.4384 4.5 10.6575L5.57419 10.9315L4.55806 11.589C2.93226 12.6849 0.9 12.6027 0 12.5205C1.82903 13.726 4.00645 14 5.51613 14C6.64839 14 7.49032 13.8904 7.69355 13.8082C15.8226 12 16.2 5.15068 16.2 3.78082V3.58904L16.3742 3.47945C17.3613 2.60274 17.7677 2.13699 18 1.86301C17.9129 1.89041 17.7968 1.94521 17.6806 1.9726L15.9968 2.41096Z" />
                                     </svg>
                                 </a>
-                                <a href="javascript:void(0)"
-                                    class="mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6] hover:text-primary">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" class="fill-current">
+                                <a class="hover:text-primary mx-2 flex h-8 w-8 items-center justify-center text-[#cdced6]"
+                                    href="javascript:void(0)">
+                                    <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18">
                                         <path
                                             d="M8.90245 12.1939C10.7363 12.1939 12.2229 10.7073 12.2229 8.87352C12.2229 7.0397 10.7363 5.5531 8.90245 5.5531C7.06863 5.5531 5.58203 7.0397 5.58203 8.87352C5.58203 10.7073 7.06863 12.1939 8.90245 12.1939Z" />
                                         <path
@@ -1496,12 +1521,12 @@
     <!-- ====== Team Section End -->
 
     <!-- ====== Testimonials Start ====== -->
-    <section id="testimonials" class="bg-slate-900 pt-20 md:pt-[120px]" id="testimonials">
+    <section class="bg-slate-900 pt-20 md:pt-[120px]" id="testimonials" id="testimonials">
         <div class="container px-4">
             <div class="flex flex-wrap">
                 <div class="mx-4 w-full">
                     <div class="mx-auto mb-[60px] max-w-[620px] text-center lg:mb-20">
-                        <span class="mb-2 block text-lg font-semibold text-primary">
+                        <span class="text-primary mb-2 block text-lg font-semibold">
                             Testimonials
                         </span>
                         <h2 class="mb-4 text-3xl font-bold text-gray-100 sm:text-4xl md:text-[42px]">
@@ -1513,43 +1538,43 @@
 
             <div class="flex flex-wrap">
                 <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="ud-single-testimonial wow fadeInUp mb-12 bg-slate-900 p-8 shadow-testimonial"
+                    <div class="ud-single-testimonial wow fadeInUp shadow-testimonial mb-12 bg-slate-900 p-8"
                         data-wow-delay=".1s
           ">
                         <div class="ud-testimonial-ratings mb-3 flex items-center">
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                         </div>
                         <div class="ud-testimonial-content mb-6">
-                            <p class="text-base tracking-wide text-body-color">
+                            <p class="text-body-color text-base tracking-wide">
                                 "Aplikasi perpustakaan ini sangat memudahkan saya dalam mencari dan meminjam buku dari
                                 perpustakaan.
                                 Fitur pencarian yang intuitif dan akurat membuat saya bisa menemukan buku yang saya cari
@@ -1573,43 +1598,43 @@
                     </div>
                 </div>
                 <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="ud-single-testimonial wow fadeInUp mb-12 bg-slate-900 p-8 shadow-testimonial"
+                    <div class="ud-single-testimonial wow fadeInUp shadow-testimonial mb-12 bg-slate-900 p-8"
                         data-wow-delay=".15s
           ">
                         <div class="ud-testimonial-ratings mb-3 flex items-center">
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                         </div>
                         <div class="ud-testimonial-content mb-6">
-                            <p class="text-base tracking-wide text-body-color">
+                            <p class="text-body-color text-base tracking-wide">
                                 "Saya sangat merekomendasikan aplikasi perpustakaan ini. Aplikasi ini sangat mudah
                                 digunakan dan memiliki banyak fitur yang berguna.
                                 Terutama, saya suka fitur pencarian yang sangat intuitif dan akurat. Selain itu,
@@ -1631,43 +1656,43 @@
                     </div>
                 </div>
                 <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="ud-single-testimonial wow fadeInUp mb-12 bg-slate-900 p-8 shadow-testimonial"
+                    <div class="ud-single-testimonial wow fadeInUp shadow-testimonial mb-12 bg-slate-900 p-8"
                         data-wow-delay=".2s
           ">
                         <div class="ud-testimonial-ratings mb-3 flex items-center">
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                             <span class="mr-1 text-[#fbb040]">
-                                <svg width="18" height="16" viewBox="0 0 18 16" class="fill-current">
+                                <svg class="fill-current" width="18" height="16" viewBox="0 0 18 16">
                                     <path
                                         d="M9.09815 0.360596L11.1054 6.06493H17.601L12.3459 9.5904L14.3532 15.2947L9.09815 11.7693L3.84309 15.2947L5.85035 9.5904L0.595291 6.06493H7.0909L9.09815 0.360596Z" />
                                 </svg>
                             </span>
                         </div>
                         <div class="ud-testimonial-content mb-6">
-                            <p class="text-base tracking-wide text-body-color">
+                            <p class="text-body-color text-base tracking-wide">
                                 "Aplikasi perpustakaan ini sangat berguna bagi saya yang sering meminjam buku dari
                                 perpustakaan.
                                 Saya sangat merekomendasikan aplikasi ini bagi siapapun yang ingin mencari dan meminjam
@@ -1696,19 +1721,19 @@
     <!-- ====== Testimonials End ====== -->
 
     <!-- ====== Faq Section Start -->
-    <section class="relative z-20 overflow-hidden bg-slate-900 pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]"
+    <section class="relative z-20 overflow-hidden bg-slate-900 pb-12 pt-20 lg:pb-[90px] lg:pt-[120px]"
         id="faq">
         <div class="container">
             <div class="-mx-4 flex flex-wrap">
                 <div class="w-full px-4">
                     <div class="mx-auto mb-[60px] max-w-[620px] text-center lg:mb-20">
-                        <span class="mb-2 block text-lg font-semibold text-primary">
+                        <span class="text-primary mb-2 block text-lg font-semibold">
                             FAQ
                         </span>
                         <h2 class="mb-4 text-3xl font-bold text-gray-100 sm:text-4xl md:text-[42px]">
                             Any Questions? Answered
                         </h2>
-                        <p class="text-lg leading-relaxed text-body-color sm:text-xl sm:leading-relaxed">
+                        <p class="text-body-color text-lg leading-relaxed sm:text-xl sm:leading-relaxed">
                             We have collected some of the most frequently asked questions and
                             answers.
                         </p>
@@ -1723,9 +1748,9 @@
           ">
                         <button class="faq-btn flex w-full items-center text-left">
                             <div
-                                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary bg-opacity-5 text-primary">
-                                <svg width="17" height="10" viewBox="0 0 17 10"
-                                    class="icon fill-current">
+                                class="bg-primary text-primary mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-opacity-5">
+                                <svg class="icon fill-current" width="17" height="10"
+                                    viewBox="0 0 17 10">
                                     <path
                                         d="M7.28687 8.43257L7.28679 8.43265L7.29496 8.43985C7.62576 8.73124 8.02464 8.86001 8.41472 8.86001C8.83092 8.86001 9.22376 8.69083 9.53447 8.41713L9.53454 8.41721L9.54184 8.41052L15.7631 2.70784L15.7691 2.70231L15.7749 2.69659C16.0981 2.38028 16.1985 1.80579 15.7981 1.41393C15.4803 1.1028 14.9167 1.00854 14.5249 1.38489L8.41472 7.00806L2.29995 1.38063L2.29151 1.37286L2.28271 1.36548C1.93092 1.07036 1.38469 1.06804 1.03129 1.41393L1.01755 1.42738L1.00488 1.44184C0.69687 1.79355 0.695778 2.34549 1.0545 2.69659L1.05999 2.70196L1.06565 2.70717L7.28687 8.43257Z"
                                         fill="#3056D3" stroke="#3056D3" />
@@ -1738,7 +1763,7 @@
                             </div>
                         </button>
                         <div class="faq-content hidden pl-[62px]">
-                            <p class="py-3 text-base leading-relaxed text-body-color">
+                            <p class="text-body-color py-3 text-base leading-relaxed">
                                 Just download the application and register. After that, you can
                                 use the application.
                             </p>
@@ -1749,9 +1774,9 @@
           ">
                         <button class="faq-btn flex w-full items-center text-left">
                             <div
-                                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary bg-opacity-5 text-primary">
-                                <svg width="17" height="10" viewBox="0 0 17 10"
-                                    class="icon fill-current">
+                                class="bg-primary text-primary mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-opacity-5">
+                                <svg class="icon fill-current" width="17" height="10"
+                                    viewBox="0 0 17 10">
                                     <path
                                         d="M7.28687 8.43257L7.28679 8.43265L7.29496 8.43985C7.62576 8.73124 8.02464 8.86001 8.41472 8.86001C8.83092 8.86001 9.22376 8.69083 9.53447 8.41713L9.53454 8.41721L9.54184 8.41052L15.7631 2.70784L15.7691 2.70231L15.7749 2.69659C16.0981 2.38028 16.1985 1.80579 15.7981 1.41393C15.4803 1.1028 14.9167 1.00854 14.5249 1.38489L8.41472 7.00806L2.29995 1.38063L2.29151 1.37286L2.28271 1.36548C1.93092 1.07036 1.38469 1.06804 1.03129 1.41393L1.01755 1.42738L1.00488 1.44184C0.69687 1.79355 0.695778 2.34549 1.0545 2.69659L1.05999 2.70196L1.06565 2.70717L7.28687 8.43257Z"
                                         fill="#3056D3" stroke="#3056D3" />
@@ -1764,7 +1789,7 @@
                             </div>
                         </button>
                         <div class="faq-content hidden pl-[62px]">
-                            <p class="py-3 text-base leading-relaxed text-body-color">
+                            <p class="text-body-color py-3 text-base leading-relaxed">
                                 Git clone the repository and modify the code. Then you can
                                 run and build the application.
                             </p>
@@ -1775,9 +1800,9 @@
           ">
                         <button class="faq-btn flex w-full items-center text-left">
                             <div
-                                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary bg-opacity-5 text-primary">
-                                <svg width="17" height="10" viewBox="0 0 17 10"
-                                    class="icon fill-current">
+                                class="bg-primary text-primary mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-opacity-5">
+                                <svg class="icon fill-current" width="17" height="10"
+                                    viewBox="0 0 17 10">
                                     <path
                                         d="M7.28687 8.43257L7.28679 8.43265L7.29496 8.43985C7.62576 8.73124 8.02464 8.86001 8.41472 8.86001C8.83092 8.86001 9.22376 8.69083 9.53447 8.41713L9.53454 8.41721L9.54184 8.41052L15.7631 2.70784L15.7691 2.70231L15.7749 2.69659C16.0981 2.38028 16.1985 1.80579 15.7981 1.41393C15.4803 1.1028 14.9167 1.00854 14.5249 1.38489L8.41472 7.00806L2.29995 1.38063L2.29151 1.37286L2.28271 1.36548C1.93092 1.07036 1.38469 1.06804 1.03129 1.41393L1.01755 1.42738L1.00488 1.44184C0.69687 1.79355 0.695778 2.34549 1.0545 2.69659L1.05999 2.70196L1.06565 2.70717L7.28687 8.43257Z"
                                         fill="#3056D3" stroke="#3056D3" />
@@ -1790,7 +1815,7 @@
                             </div>
                         </button>
                         <div class="faq-content hidden pl-[62px]">
-                            <p class="py-3 text-base leading-relaxed text-body-color">
+                            <p class="text-body-color py-3 text-base leading-relaxed">
                                 We use Laravel as backend technology.
                             </p>
                         </div>
@@ -1802,9 +1827,9 @@
           ">
                         <button class="faq-btn flex w-full items-center text-left">
                             <div
-                                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary bg-opacity-5 text-primary">
-                                <svg width="17" height="10" viewBox="0 0 17 10"
-                                    class="icon fill-current">
+                                class="bg-primary text-primary mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-opacity-5">
+                                <svg class="icon fill-current" width="17" height="10"
+                                    viewBox="0 0 17 10">
                                     <path
                                         d="M7.28687 8.43257L7.28679 8.43265L7.29496 8.43985C7.62576 8.73124 8.02464 8.86001 8.41472 8.86001C8.83092 8.86001 9.22376 8.69083 9.53447 8.41713L9.53454 8.41721L9.54184 8.41052L15.7631 2.70784L15.7691 2.70231L15.7749 2.69659C16.0981 2.38028 16.1985 1.80579 15.7981 1.41393C15.4803 1.1028 14.9167 1.00854 14.5249 1.38489L8.41472 7.00806L2.29995 1.38063L2.29151 1.37286L2.28271 1.36548C1.93092 1.07036 1.38469 1.06804 1.03129 1.41393L1.01755 1.42738L1.00488 1.44184C0.69687 1.79355 0.695778 2.34549 1.0545 2.69659L1.05999 2.70196L1.06565 2.70717L7.28687 8.43257Z"
                                         fill="#3056D3" stroke="#3056D3" />
@@ -1817,7 +1842,7 @@
                             </div>
                         </button>
                         <div class="faq-content hidden pl-[62px]">
-                            <p class="py-3 text-base leading-relaxed text-body-color">
+                            <p class="text-body-color py-3 text-base leading-relaxed">
                                 Currently we don't have any documentation. But we will add
                                 documentation soon.
                             </p>
@@ -1828,9 +1853,9 @@
           ">
                         <button class="faq-btn flex w-full items-center text-left">
                             <div
-                                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary bg-opacity-5 text-primary">
-                                <svg width="17" height="10" viewBox="0 0 17 10"
-                                    class="icon fill-current">
+                                class="bg-primary text-primary mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-opacity-5">
+                                <svg class="icon fill-current" width="17" height="10"
+                                    viewBox="0 0 17 10">
                                     <path
                                         d="M7.28687 8.43257L7.28679 8.43265L7.29496 8.43985C7.62576 8.73124 8.02464 8.86001 8.41472 8.86001C8.83092 8.86001 9.22376 8.69083 9.53447 8.41713L9.53454 8.41721L9.54184 8.41052L15.7631 2.70784L15.7691 2.70231L15.7749 2.69659C16.0981 2.38028 16.1985 1.80579 15.7981 1.41393C15.4803 1.1028 14.9167 1.00854 14.5249 1.38489L8.41472 7.00806L2.29995 1.38063L2.29151 1.37286L2.28271 1.36548C1.93092 1.07036 1.38469 1.06804 1.03129 1.41393L1.01755 1.42738L1.00488 1.44184C0.69687 1.79355 0.695778 2.34549 1.0545 2.69659L1.05999 2.70196L1.06565 2.70717L7.28687 8.43257Z"
                                         fill="#3056D3" stroke="#3056D3" />
@@ -1843,7 +1868,7 @@
                             </div>
                         </button>
                         <div class="faq-content hidden pl-[62px]">
-                            <p class="py-3 text-base leading-relaxed text-body-color">
+                            <p class="text-body-color py-3 text-base leading-relaxed">
                                 Yes, we have plan to add support for android. But we don't have
                                 any timeline for that.
                             </p>
@@ -1854,9 +1879,9 @@
           ">
                         <button class="faq-btn flex w-full items-center text-left">
                             <div
-                                class="mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-primary bg-opacity-5 text-primary">
-                                <svg width="17" height="10" viewBox="0 0 17 10"
-                                    class="icon fill-current">
+                                class="bg-primary text-primary mr-5 flex h-10 w-full max-w-[40px] items-center justify-center rounded-lg bg-opacity-5">
+                                <svg class="icon fill-current" width="17" height="10"
+                                    viewBox="0 0 17 10">
                                     <path
                                         d="M7.28687 8.43257L7.28679 8.43265L7.29496 8.43985C7.62576 8.73124 8.02464 8.86001 8.41472 8.86001C8.83092 8.86001 9.22376 8.69083 9.53447 8.41713L9.53454 8.41721L9.54184 8.41052L15.7631 2.70784L15.7691 2.70231L15.7749 2.69659C16.0981 2.38028 16.1985 1.80579 15.7981 1.41393C15.4803 1.1028 14.9167 1.00854 14.5249 1.38489L8.41472 7.00806L2.29995 1.38063L2.29151 1.37286L2.28271 1.36548C1.93092 1.07036 1.38469 1.06804 1.03129 1.41393L1.01755 1.42738L1.00488 1.44184C0.69687 1.79355 0.695778 2.34549 1.0545 2.69659L1.05999 2.70196L1.06565 2.70717L7.28687 8.43257Z"
                                         fill="#3056D3" stroke="#3056D3" />
@@ -1869,7 +1894,7 @@
                             </div>
                         </button>
                         <div class="faq-content hidden pl-[62px]">
-                            <p class="py-3 text-base leading-relaxed text-body-color">
+                            <p class="text-body-color py-3 text-base leading-relaxed">
                                 You can find the color reference in the tailwind web pages.
                             </p>
                         </div>
@@ -1897,15 +1922,10 @@
     </section>
     <!-- ====== Faq Section End -->
 
-
-
-
-
-
     <!-- ====== Back To Top Start -->
-    <a href="javascript:void(0)"
-        class="back-to-top fixed bottom-8 right-8 left-auto z-[999] hidden h-10 w-10 items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:bg-dark">
-        <span class="mt-[6px] h-3 w-3 rotate-45 border-t border-l border-white"></span>
+    <a class="back-to-top bg-primary hover:bg-dark fixed bottom-8 left-auto right-8 z-[999] hidden h-10 w-10 items-center justify-center rounded-md text-white shadow-md transition duration-300 ease-in-out"
+        href="javascript:void(0)">
+        <span class="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
     </a>
     <!-- ====== Back To Top End -->
 

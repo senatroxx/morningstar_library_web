@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,8 +13,26 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('index');
+})->name('user.index');
+
+Route::prefix('auth')->group(function () {
+    Route::prefix('register')->group(function () {
+        Route::get('/', [RegisterController::class, 'show'])->name('register');
+        Route::post('/', [RegisterController::class, 'store'])->name('register');
+    });
+
+    Route::prefix('login')->group(function () {
+        Route::get('/', [LoginController::class, 'show'])->name('login');
+        Route::post('/', [LoginController::class, 'login'])->name('login');
+    });
+});
+
+Route::group(['middleware' => 'auth:admin', 'prefix' => 'dashboard', 'as' => 'admin.'], function () {
+    Route::get('/', function () {
+        return 'Admin dashboard';
+    })->name('index');
 });
