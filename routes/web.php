@@ -31,8 +31,8 @@ Route::prefix('auth')->group(function () {
     });
 });
 
-Route::group(['middleware' => 'auth:admin', 'prefix' => 'dashboard', 'as' => 'admin.'], function () {
+Route::group(['prefix' => 'dashboard', 'as' => 'admin.'], function () {
     Route::get('/', function () {
-        return 'Admin dashboard';
+        return view('admin.index');
     })->name('index');
 });
