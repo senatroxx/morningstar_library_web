@@ -25,13 +25,13 @@ Route::prefix('auth')->group(function () {
         Route::post('/', [RegisterController::class, 'store'])->name('register');
     });
 
-    Route::prefix('login')->group(function () {
+    Route::prefix('login')->middleware('guest:admin,user')->group(function () {
         Route::get('/', [LoginController::class, 'show'])->name('login');
         Route::post('/', [LoginController::class, 'login'])->name('login');
     });
 });
 
-Route::group(['prefix' => 'dashboard', 'as' => 'admin.'], function () {
+Route::group(['prefix' => 'dashboard', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('index');
