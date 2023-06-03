@@ -26,7 +26,7 @@
                         </span>
                         <input
                             class="ease relative -ml-px block w-1/100 min-w-0 flex-auto rounded-lg border border-solid border-gray-300 bg-transparent bg-clip-padding py-2 pl-9 pr-3 text-sm leading-5.6 text-gray-700 transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none focus:transition-shadow dark:text-white"
-                            type="text" placeholder="Book Title" name="q" autocomplete="off" />
+                            type="text" placeholder="Category Name" name="q" autocomplete="off" />
                         {{-- </div> --}}
                     </form>
 
