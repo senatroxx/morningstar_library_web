@@ -56,13 +56,6 @@
                         <button class="btn btn-primary" type="submit">Login</button>
                     </div>
                     <a class="label-text-alt link link-hover text-right" href="#">Forgot password?</a>
-                    <div class="form-control">
-                        <label class="label cursor-pointer">
-                            <span class="label-text">Remember me</span>
-                            <input class="checkbox checkbox-primary" type="checkbox" checked="checked" name="remember"
-                                value="true" />
-                        </label>
-                    </div>
                     <p class="mt-10 text-center text-sm text-indigo-50">
                         Not a member?
                         <a class="font-semibold leading-6 text-indigo-50 hover:text-indigo-500" href="register">Sign
