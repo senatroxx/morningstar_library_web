@@ -18,7 +18,6 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
-        dd($request->all());
         $attributes = $request->validated();
 
         $user = User::with('role')->where('email', $attributes['email'])->first();
@@ -31,7 +30,7 @@ class LoginController extends Controller
 
         $role = $user->role->name;
 
-        if (Auth::guard($role)->attempt($attributes, $attributes['remember'] ?? false)) {
+        if (Auth::guard($role)->attempt($attributes, $attributes['remember'] ? true : false)) {
             $request->session()->regenerate();
 
             return redirect()->intended(route("$role.index"));
