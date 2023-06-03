@@ -10,51 +10,56 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="m-0 bg-slate-900 font-sans text-base font-normal leading-default text-slate-500 antialiased">
-    <section class="bg-gray-900">
-        <div class="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
-            <a class="mb-6" href="/">
-                <img class="mr-2 h-14" src={{ asset('images/logo/logo-white.png') }} alt="logo">
-            </a>
-            <div class="w-full rounded-lg bg-gray-800 shadow sm:max-w-lg md:mt-0 xl:p-0">
-                <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
-                    <h1 class="font-sans text-xl font-bold leading-tight tracking-tight text-gray-100 md:text-2xl">
-                        Sign in to your account
-                    </h1>
-                    <form class="flex flex-col space-y-1 md:space-y-4" action={{ route('login') }} method="POST">
-                        @csrf
-                        <div>
-                            <label class="mb-2 block text-sm font-medium text-gray-100" for="email">Email
-                                address</label>
-                            <input
-                                class="block w-full rounded-md bg-gray-700 p-2.5 text-white placeholder-gray-400 outline-none focus:outline-blue-500"
-                                id="email" type="email" name="email" placeholder="name@company.com"
-                                required="">
+<body class="hero bg-base-200 min-h-screen">
+    <div class="hero bg-base-200 min-h-screen">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+            <div class="text-center lg:text-left">
+                <img class="mx-auto mb-4 ml-0 h-32 w-auto" src="https://i.postimg.cc/15BQDj4w/logo.png" alt="Workflow">
+                <h1 class="text-5xl font-bold">Login now!</h1>
+                <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
+                    exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            </div>
+
+            <div class="card bg-base-100 w-full max-w-sm flex-shrink-0 shadow-2xl">
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
+                    <div class="card-body">
+                        <a class="btn-sm" role="button">Link</a>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Email</span>
+                            </label>
+                            <input class="input input-bordered" type="text" name="email" placeholder="email" />
                         </div>
-                        <div class="w-full">
-                            <label class="mb-2 block text-sm font-medium text-white" for="password">Password</label>
-                            <input
-                                class="block w-full rounded-md bg-gray-700 p-2.5 text-white placeholder-gray-400 outline-none focus:outline-blue-500"
-                                id="password" type="password" name="password" placeholder="••••••••" required="">
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Password</span>
+                            </label>
+                            <input class="input input-bordered" type="text" placeholder="password" name="password" />
+                            <label class="label">
+                                <a class="label-text-alt link link-hover" href="#">Forgot password?</a>
+                            </label>
                         </div>
-                        <div class="flex items-center justify-end">
-                            <a class="text-sm font-medium text-blue-500 hover:underline" href="#">Forgot
-                                password?</a>
+                        <div class="form-control mt-1">
+                            <button class="btn btn-primary">Login</button>
                         </div>
-                        <button
-                            class="block w-full rounded-md bg-blue-500 p-2.5 text-gray-100 duration-150 ease-in hover:bg-blue-600"
-                            type="submit">
-                            Sign up
-                        </button>
-                        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                            Don't have an account?
-                            <a class="font-medium text-blue-500 hover:underline" href="#">Sign up</a>
+                        <div class="form-control">
+                            <label class="label cursor-pointer">
+                                <span class="label-text">Remember me</span>
+                                <input class="checkbox checkbox-primary" type="checkbox" checked="checked"
+                                    name="remember" />
+                            </label>
+                        </div>
+                        <p class="mt-10 text-center text-sm text-indigo-50">
+                            Not a member?
+                            <a class="font-semibold leading-6 text-indigo-50 hover:text-indigo-500" href="register">Sign
+                                Up!</a>
                         </p>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
 </body>
 
 </html>

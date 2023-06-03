@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         $role = $user->role->name;
 
-        if (Auth::guard($role)->attempt($attributes)) {
+        if (Auth::guard($role)->attempt($attributes, $attributes['remember'] ?? false)) {
             $request->session()->regenerate();
 
             return redirect()->intended(route("$role.index"));
