@@ -18,6 +18,7 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
+        dd($request->all());
         $attributes = $request->validated();
 
         $user = User::with('role')->where('email', $attributes['email'])->first();

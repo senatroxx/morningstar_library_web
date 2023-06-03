@@ -24,25 +24,24 @@
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     <div class="card-body">
-                        <a class="btn-sm" role="button">Link</a>
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text">Email</span>
                             </label>
-                            <input class="input input-bordered" type="text" name="email" placeholder="email" />
+                            <input class="input input-bordered" type="text" name="email" placeholder="Email" />
                         </div>
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text">Password</span>
                             </label>
-                            <input class="input input-bordered" type="text" placeholder="password" name="password" />
-                            <label class="label">
-                                <a class="label-text-alt link link-hover" href="#">Forgot password?</a>
-                            </label>
+                            <input class="input input-bordered" type="password" placeholder="Password"
+                                name="password" />
                         </div>
+
                         <div class="form-control mt-1">
-                            <button class="btn btn-primary">Login</button>
+                            <button class="btn btn-primary" type="submit">Login</button>
                         </div>
+                        <a class="label-text-alt link link-hover text-right" href="#">Forgot password?</a>
                         <div class="form-control">
                             <label class="label cursor-pointer">
                                 <span class="label-text">Remember me</span>
