@@ -66,5 +66,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
 
     Route::prefix('publishers')->group(function () {
         Route::get('/', [PublisherController::class, 'index'])->name('publishers.index');
+        Route::get('/create', [PublisherController::class, 'create'])->name('publishers.create');
+        Route::post('/', [PublisherController::class, 'store'])->name('publishers.store');
+        Route::get('/{publisher:slug}/edit', [PublisherController::class, 'edit'])->name('publishers.edit');
+        Route::put('/{publisher:slug}', [PublisherController::class, 'update'])->name('publishers.update');
+        Route::delete('/{publisher:slug}', [PublisherController::class, 'destroy'])->name('publishers.destroy');
     });
 });
