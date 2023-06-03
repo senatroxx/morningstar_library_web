@@ -44,8 +44,8 @@
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
-                    href="../pages/billing.html">
+                <a class="ease-nav-brand {{ request()->routeIs('admin.categories.*') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                    href="{{ route('admin.categories.index') }}">
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-2.5">
                         <i class="ni ni-credit-card relative top-0 text-sm leading-normal text-emerald-500"></i>

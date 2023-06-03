@@ -18,7 +18,7 @@
 
                 <div class="mt-3 flex w-full items-center lg:mt-0 lg:w-3/6">
                     <form class="ease relative flex w-full flex-wrap items-stretch rounded-lg transition-all"
-                        action={{ route('admin.books.index') }} method="get">
+                        action={{ route('admin.categories.index') }} method="get">
                         {{-- <div class="ease relative flex w-1/4 flex-wrap items-stretch rounded-lg transition-all"> --}}
                         <span
                             class="ease absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-br-none rounded-tr-none border border-r-0 border-transparent bg-transparent px-2.5 py-2 text-center text-sm font-normal leading-5.6 text-slate-500 transition-all">
@@ -30,9 +30,9 @@
                         {{-- </div> --}}
                     </form>
 
-                    <a class="mx-3 inline-block w-2/4 cursor-pointer rounded-lg bg-gradient-to-tl from-emerald-600 to-teal-500 bg-150 bg-x-25 px-6 py-3 text-center align-middle text-xs font-bold uppercase leading-normal tracking-tight-rem text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85 xl:w-1/3"
-                        href="{{ route('admin.books.create') }}">
-                        Add Book
+                    <a class="mx-3 inline-block w-2/3 cursor-pointer rounded-lg bg-gradient-to-tl from-emerald-600 to-teal-500 bg-150 bg-x-25 px-6 py-3 text-center align-middle text-xs font-bold uppercase leading-normal tracking-tight-rem text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85 xl:w-1/3"
+                        href="{{ route('admin.categories.create') }}">
+                        Add Category
                     </a>
 
                 </div>
@@ -48,11 +48,7 @@
                                 </th>
                                 <th
                                     class="border-b-solid border-collapse whitespace-nowrap border-b bg-transparent px-6 py-3 pl-2 text-left align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-white/40 dark:text-white">
-                                    Title
-                                </th>
-                                <th
-                                    class="border-b-solid border-collapse whitespace-nowrap border-b bg-transparent px-6 py-3 text-center align-middle text-xxs font-bold uppercase tracking-none text-slate-400 opacity-70 shadow-none dark:border-white/40 dark:text-white">
-                                    Published At
+                                    Name
                                 </th>
                                 <th
                                     class="border-collapse whitespace-nowrap border-b border-solid bg-transparent px-6 py-3 align-middle font-semibold capitalize tracking-none text-slate-400 opacity-70 shadow-none dark:border-white/40 dark:text-white">
@@ -60,34 +56,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($books as $book)
+                            @foreach ($categories as $category)
                                 <tr>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent p-2 text-center align-middle shadow-transparent dark:border-white/40">
                                         <h6 class="mb-0 px-2 py-1 text-sm leading-normal dark:text-white">
-                                            {{ $book->id }}
+                                            {{ $category->id }}
                                         </h6>
                                     </td>
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent p-2 align-middle shadow-transparent dark:border-white/40">
                                         <p class="mb-0 px-2 py-1 text-sm leading-normal dark:text-white">
-                                            {{ $book->title }}
+                                            {{ $category->name }}
                                         </p>
                                     </td>
                                     <td
-                                        class="whitespace-nowrap border-b bg-transparent p-2 text-center align-middle shadow-transparent dark:border-white/40">
-                                        <span
-                                            class="text-xs font-semibold leading-tight text-slate-400 dark:text-white dark:opacity-80">
-                                            {{ $book->published_at }}
-                                        </span>
-                                    </td>
-                                    <td
                                         class="whitespace-nowrap border-b bg-transparent p-2 align-middle shadow-transparent dark:border-white/40">
-                                        <form action="{{ route('admin.books.destroy', $book->slug) }}" method="post">
+                                        <form action="{{ route('admin.categories.destroy', $category->slug) }}"
+                                            method="post">
                                             @csrf
                                             @method('delete')
                                             <a class="inline-block whitespace-nowrap rounded-1.8 bg-gradient-to-tl from-blue-500 to-violet-500 px-2.5 py-1.4 text-center align-baseline text-xs font-bold uppercase leading-none text-white"
-                                                href="{{ route('admin.books.edit', $book->slug) }}">
+                                                href="{{ route('admin.categories.edit', $category->slug) }}">
                                                 Edit
                                             </a>
 
@@ -107,7 +97,7 @@
                 </div>
             </div>
         </div>
-        {{ $books->onEachSide(1)->links('pagination::tailwind') }}
+        {{ $categories->onEachSide(1)->links('pagination::tailwind') }}
     </div>
 
 @endsection

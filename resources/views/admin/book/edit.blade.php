@@ -76,7 +76,7 @@
                         <button
                             class="ease inline-block appearance-none rounded-lg border border-solid border-gray-300 bg-gradient-to-tl from-emerald-500 to-teal-400 bg-150 bg-x-25 px-6 py-3 text-center align-middle text-xs font-bold uppercase leading-normal tracking-tight-rem text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
                             type="submit">
-                            Add
+                            Update
                         </button>
                     </div>
                 </div>

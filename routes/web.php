@@ -57,11 +57,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
 
     Route::prefix('categories')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('categories.index');
-        Route::get('/create', [CategoryController::class, 'create'])->name('books.create');
-        Route::post('/', [CategoryController::class, 'store'])->name('books.store');
-        Route::get('/{book:slug}/edit', [CategoryController::class, 'edit'])->name('books.edit');
-        Route::put('/{book:slug}', [CategoryController::class, 'update'])->name('books.update');
-        Route::delete('/{book:slug}', [CategoryController::class, 'destroy'])->name('books.destroy');
+        Route::get('/create', [CategoryController::class, 'create'])->name('categories.create');
+        Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
+        Route::get('/{category:slug}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+        Route::put('/{category:slug}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/{category:slug}', [CategoryController::class, 'destroy'])->name('categories.destroy');
     });
 
     Route::prefix('publishers')->group(function () {
