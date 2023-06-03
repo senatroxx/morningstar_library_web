@@ -41,7 +41,8 @@
     </main>
 
     @yield('tail')
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
         var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
         var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");

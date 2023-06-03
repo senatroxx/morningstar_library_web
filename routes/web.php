@@ -26,10 +26,12 @@ Route::get("/", function () {
 })->name("user.index");
 
 Route::prefix("auth")->group(function () {
-    Route::prefix("register")->group(function () {
-        Route::get("/", [RegisterController::class, "show"])->name("register");
-        Route::post("/", [RegisterController::class, "store"])->name("register");
-    });
+    Route::prefix("register")
+        ->middleware("guest:admin,user")
+        ->group(function () {
+            Route::get("/", [RegisterController::class, "show"])->name("register");
+            Route::post("/", [RegisterController::class, "store"])->name("register");
+        });
 
     Route::prefix("login")
         ->middleware("guest:admin,user")
@@ -37,6 +39,8 @@ Route::prefix("auth")->group(function () {
             Route::get("/", [LoginController::class, "show"])->name("login");
             Route::post("/", [LoginController::class, "login"])->name("login");
         });
+
+    Route::post("logout", [LoginController::class, "logout"])->middleware("auth:admin,user")->name("logout");
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
