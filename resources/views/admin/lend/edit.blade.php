@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Add Book')
+@section('title', 'Edit Lend')
 
 @section('head')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -29,47 +29,40 @@
             class="relative mb-6 flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid border-transparent bg-white bg-clip-border shadow-xl dark:bg-slate-850 dark:shadow-dark-xl">
             <div class="border-b-solid mb-2 rounded-t-2xl border-b-0 border-b-transparent p-6 pb-0">
                 <div class="flex items-center justify-between">
-                    <h6 class="m-0 font-bold text-gray-700 dark:text-white">Add Book</h6>
+                    <h6 class="m-0 font-bold text-gray-700 dark:text-white">Edit Lend</h6>
                     <a class="mr-3 inline-block cursor-pointer rounded-lg bg-gradient-to-tl from-blue-500 to-violet-500 bg-150 bg-x-25 px-6 py-3 text-center align-middle text-xs font-bold uppercase leading-normal tracking-tight-rem text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
-                        href="{{ route('admin.books.index') }}">
+                        href="{{ route('admin.lends.index') }}">
                         Back
                     </a>
                 </div>
             </div>
-            <form action="{{ route('admin.books.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.lends.update', $lend->id) }}" method="post">
                 @csrf
+                @method('PUT')
                 <div class="flex flex-col gap-4 px-4 pb-2 pt-0">
                     <div class="flex flex-col gap-4 lg:flex-row">
-                        <input
-                            class="ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
-                            type="text" placeholder="Title" name="title" autocomplete="off" />
-                        <input
-                            class="ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
-                            type="number" placeholder="Quantity" name="quantity" autocomplete="off" />
-                    </div>
-                    <textarea
-                        class="ease block h-auto min-h-unset w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
-                        name="description" rows="5" placeholder="Description"></textarea>
-                    <div class="flex flex-col gap-4 lg:flex-row">
-                        <select id="author" name="authors_id[]" style="width: 100%" multiple="multiple"></select>
-                        <select id="category" name="categories_id[]" style="width: 100%" multiple="multiple"></select>
+                        <select id="user" name="user_id" style="width: 100%">
+                            <option value="{{ $lend->user->id }}" selected="selected">{{ $lend->user->name }}
+                        </select>
+                        <select id="book" name="book_id" style="width: 100%">
+                            <option value="{{ $lend->book->id }}" selected="selected">{{ $lend->book->title }}
+                        </select>
                     </div>
                     <div class="flex flex-col gap-4 lg:flex-row">
                         <input
-                            class="ease block w-1/2 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
-                            id="published" type="text" placeholder="Please select a date" name="published_at" />
-                        <select id="publisher" name="publisher_id" style="width: 100%"></select>
+                            class="ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
+                            id="range" type="text" placeholder="Choose date range" name="range" />
+                        <select id="returned" name="returned" style="width: 100%">
+                            <option value="0" @selected($lend->returned == '0' ? true : false)>Not returned</option>
+                            <option value="1" @selected($lend->returned == '1' ? true : false)>Returned</option>
+                        </select>
                     </div>
-                    <label class="w-full">
-                        <input
-                            class="text-grey-700 file:text-md w-full rounded-lg border border-solid border-gray-300 text-sm file:mr-5 file:border-0 file:bg-gradient-to-tl file:from-blue-500 file:to-violet-500 file:px-7 file:py-2 file:font-semibold file:text-white hover:file:cursor-pointer hover:file:opacity-80 dark:text-white"
-                            type="file" name="thumbnail" />
-                    </label>
+
                     <div class="flex flex-col justify-end gap-4 lg:flex-row">
                         <button
                             class="ease inline-block appearance-none rounded-lg border border-solid border-gray-300 bg-gradient-to-tl from-emerald-500 to-teal-400 bg-150 bg-x-25 px-6 py-3 text-center align-middle text-xs font-bold uppercase leading-normal tracking-tight-rem text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
                             type="submit">
-                            Add
+                            Update
                         </button>
                     </div>
                 </div>
@@ -84,11 +77,11 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Author Select2
-            $('#author').select2({
+
+            $('#user').select2({
                 width: 'resolve',
                 ajax: {
-                    url: '{{ request()->getSchemeAndHttpHost() }}/admin/authors',
+                    url: '{{ request()->getSchemeAndHttpHost() }}/admin/users',
                     type: 'get',
                     dataType: 'json',
                     delay: 250,
@@ -113,17 +106,16 @@
                             }
                         };
                     },
-                    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
                 },
-                placeholder: 'Select Author',
+                placeholder: 'Select User',
                 cache: true,
             });
 
-            // Category Select2
-            $('#category').select2({
+
+            $('#book').select2({
                 width: 'resolve',
                 ajax: {
-                    url: '{{ request()->getSchemeAndHttpHost() }}/admin/categories',
+                    url: '{{ request()->getSchemeAndHttpHost() }}/admin/books',
                     type: 'get',
                     dataType: 'json',
                     delay: 250,
@@ -138,7 +130,7 @@
                         results = res.data.map(data => {
                             return {
                                 id: data.id,
-                                text: data.name
+                                text: data.title
                             }
                         })
                         return {
@@ -148,51 +140,31 @@
                             }
                         };
                     },
-                    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
                 },
-                placeholder: 'Select Category',
+                placeholder: 'Select Book',
                 cache: true,
             });
 
-            // Publisher Select2
-            $('#publisher').select2({
-                width: 'resolve',
-                ajax: {
-                    url: '{{ request()->getSchemeAndHttpHost() }}/admin/publishers',
-                    type: 'get',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function(params) {
-                        return {
-                            _token: "{{ csrf_token() }}",
-                            q: params.term,
-                            page: params.page || 1
-                        }
-                    },
-                    processResults: function(res) {
-                        results = res.data.map(data => {
-                            return {
-                                id: data.id,
-                                text: data.name
-                            }
-                        })
-                        return {
-                            results,
-                            pagination: {
-                                more: res.current_page < res.last_page
-                            }
-                        };
-                    },
-                    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+            $('#returned').select2({
+                onChange: function(selectedDates, dateStr, instance) {
+                    // Get the selected start date
+                    var startDate = selectedDates[0];
+
+                    // Calculate the maximum selectable date based on the start date
+                    var maxDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate
+                        .getDate() + 7);
+
+                    // Set the maxDate option for the end date picker
+                    instance.set("maxDate", maxDate);
                 },
-                placeholder: 'Select Publisher',
-                cache: true,
+
             });
 
-            // Datepicker
             var stylesheet = document.head.querySelector(
                 "link[href$='https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css']")
-            $('#published').flatpickr({
+            $('#range').flatpickr({
+                mode: 'range',
+                defaultDate: ["{{ $lend->start_date }}", "{{ $lend->finish_date }}"],
                 onOpen: [
                     function(selectedDates, dateStr, instance) {
                         if (localStorage.getItem("color-theme")) {
@@ -217,6 +189,7 @@
                     }
                 ]
             });
+
         });
     </script>
 @endsection

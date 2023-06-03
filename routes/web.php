@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LendController;
 use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -86,5 +87,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
         Route::put('/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    });
+
+    Route::prefix('lends')->group(function () {
+        Route::get('/', [LendController::class, 'index'])->name('lends.index');
+        Route::get('/create', [LendController::class, 'create'])->name('lends.create');
+        Route::post('/', [LendController::class, 'store'])->name('lends.store');
+        Route::get('/{lend}/edit', [LendController::class, 'edit'])->name('lends.edit');
+        Route::put('/{lend}', [LendController::class, 'update'])->name('lends.update');
+        Route::delete('/{lend}', [LendController::class, 'destroy'])->name('lends.destroy');
+        Route::post('/return/{lend}', [LendController::class, 'returnBook'])->name('lends.return');
     });
 });

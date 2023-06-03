@@ -17,6 +17,10 @@ class UserController extends Controller
             return $users->where('name', 'LIKE', '%' . $request->get('q') . '%');
         })->paginate(10);
 
+        if ($request->wantsJson()) {
+            return response()->json($users);
+        }
+
         return view('admin.user.index', compact('users'));
     }
 

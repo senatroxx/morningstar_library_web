@@ -19,7 +19,11 @@ class BookController extends Controller
             $books->where('title', 'LIKE', '%' . request('q') . '%');
         }
 
-        $books = $books->paginate(10)->withQueryString();
+        $books = $books->paginate(10);
+
+        if (request()->expectsJson()) {
+            return response()->json($books);
+        }
 
         return view('admin.book.index', ['books' => $books]);
     }
