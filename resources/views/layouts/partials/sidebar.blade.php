@@ -22,8 +22,8 @@
     <div class="block max-h-screen w-auto grow basis-full items-center overflow-auto">
         <ul class="mb-0 flex flex-col pl-0">
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand mx-2 my-0 flex items-center whitespace-nowrap rounded-lg bg-blue-500/13 px-4 py-2.7 text-sm font-semibold text-slate-700 transition-colors dark:text-white dark:opacity-80"
-                    href="../pages/dashboard.html">
+                <a class="ease-nav-brand {{ request()->routeIs('admin.index') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                    href={{ route('admin.index') }}>
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="ni ni-tv-2 relative top-0 text-sm leading-normal text-blue-500"></i>
@@ -33,13 +33,13 @@
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
-                    href="../pages/tables.html">
+                <a class="ease-nav-brand {{ request()->routeIs('admin.books.*') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                    href={{ route('admin.books.index') }}>
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="ni ni-calendar-grid-58 relative top-0 text-sm leading-normal text-orange-500"></i>
                     </div>
-                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Tables</span>
+                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Books</span>
                 </a>
             </li>
 
@@ -50,7 +50,7 @@
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-2.5">
                         <i class="ni ni-credit-card relative top-0 text-sm leading-normal text-emerald-500"></i>
                     </div>
-                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Billing</span>
+                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Categories</span>
                 </a>
             </li>
 
@@ -61,7 +61,7 @@
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="ni ni-app relative top-0 text-sm leading-normal text-cyan-500"></i>
                     </div>
-                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Virtual Reality</span>
+                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Publishers</span>
                 </a>
             </li>
 
@@ -72,11 +72,22 @@
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="ni ni-world-2 relative top-0 text-sm leading-normal text-red-600"></i>
                     </div>
-                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">RTL</span>
+                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Users</span>
                 </a>
             </li>
 
-            <li class="mt-4 w-full">
+            <li class="mt-0.5 w-full">
+                <a class="ease-nav-brand mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                    href="../pages/rtl.html">
+                    <div
+                        class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i class="ni ni-world-2 relative top-0 text-sm leading-normal text-red-600"></i>
+                    </div>
+                    <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Lends</span>
+                </a>
+            </li>
+
+            {{-- <li class="mt-4 w-full">
                 <h6 class="ml-2 pl-6 text-xs font-bold uppercase leading-tight opacity-60 dark:text-white">Account pages
                 </h6>
             </li>
@@ -112,7 +123,7 @@
                     </div>
                     <span class="ease pointer-events-none ml-1 opacity-100 duration-300">Sign Up</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
 

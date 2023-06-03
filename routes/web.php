@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthorController;
+use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -31,8 +35,34 @@ Route::prefix('auth')->group(function () {
     });
 });
 
-Route::group(['prefix' => 'dashboard', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
-    Route::get('/', function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
+    Route::get('dashboard', function () {
         return view('admin.index');
     })->name('index');
+
+    Route::prefix('books')->group(function () {
+        Route::get('/', [BookController::class, 'index'])->name('books.index');
+        Route::get('/create', [BookController::class, 'create'])->name('books.create');
+        Route::post('/', [BookController::class, 'store'])->name('books.store');
+        Route::get('/{book:slug}/edit', [BookController::class, 'edit'])->name('books.edit');
+        Route::put('/{book:slug}', [BookController::class, 'update'])->name('books.update');
+        Route::delete('/{book:slug}', [BookController::class, 'destroy'])->name('books.destroy');
+    });
+
+    Route::prefix('authors')->group(function () {
+        Route::get('/', [AuthorController::class, 'index'])->name('authors.index');
+    });
+
+    Route::prefix('categories')->group(function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('categories.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('books.create');
+        Route::post('/', [CategoryController::class, 'store'])->name('books.store');
+        Route::get('/{book:slug}/edit', [CategoryController::class, 'edit'])->name('books.edit');
+        Route::put('/{book:slug}', [CategoryController::class, 'update'])->name('books.update');
+        Route::delete('/{book:slug}', [CategoryController::class, 'destroy'])->name('books.destroy');
+    });
+
+    Route::prefix('publishers')->group(function () {
+        Route::get('/', [PublisherController::class, 'index'])->name('publishers.index');
+    });
 });

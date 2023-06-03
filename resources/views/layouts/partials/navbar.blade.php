@@ -34,7 +34,7 @@
                     <a class="ease-nav-brand block px-0 py-2 text-sm font-semibold text-white transition-all"
                         href="../pages/sign-in.html">
                         <i class="fa fa-user sm:mr-1"></i>
-                        <span class="hidden sm:inline">Sign In</span>
+                        <span class="hidden sm:inline">{{ Auth::guard('admin')->name }}</span>
                     </a>
                 </li>
                 <li class="flex items-center pl-4 xl:hidden">
@@ -88,26 +88,6 @@
                                         <p class="mb-0 text-xs leading-tight text-slate-400 dark:text-white/80">
                                             <i class="fa fa-clock mr-1"></i>
                                             13 minutes ago
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li class="relative mb-2">
-                            <a class="ease clear-both block w-full whitespace-nowrap rounded-lg px-4 py-1.2 transition-colors duration-300 hover:bg-gray-200 hover:text-slate-700 dark:hover:bg-slate-900"
-                                href="javascript:;">
-                                <div class="flex py-1">
-                                    <div class="my-auto">
-                                        <img class="mr-4 inline-flex h-9 w-9 max-w-none items-center justify-center rounded-xl bg-gradient-to-tl from-zinc-800 to-zinc-700 text-sm text-white dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850"
-                                            src="../assets/img/small-logos/logo-spotify.svg" />
-                                    </div>
-                                    <div class="flex flex-col justify-center">
-                                        <h6 class="mb-1 text-sm font-normal leading-normal dark:text-white"><span
-                                                class="font-semibold">New album</span> by Travis Scott</h6>
-                                        <p class="mb-0 text-xs leading-tight text-slate-400 dark:text-white/80">
-                                            <i class="fa fa-clock mr-1"></i>
-                                            1 day
                                         </p>
                                     </div>
                                 </div>

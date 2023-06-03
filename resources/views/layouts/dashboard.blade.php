@@ -14,6 +14,7 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Main Styling -->
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/nucleo-icons.css', 'resources/css/nucleo-svg.css'])
+    @yield('head')
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
@@ -32,8 +33,14 @@
 
     <main class="relative h-full max-h-screen rounded-xl transition-all duration-200 ease-in-out xl:ml-68">
         @include('layouts.partials.navbar')
-        @yield('content')
+        <div class="mx-auto w-full px-6 py-6">
+            <div class="-mx-3 flex flex-wrap">
+                @yield('content')
+            </div>
+        </div>
     </main>
+
+    @yield('tail')
 
     <script>
         var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
