@@ -5,12 +5,12 @@
             <!-- breadcrumb -->
             <ol class="mr-12 flex flex-wrap rounded-lg bg-transparent pt-1 sm:mr-16">
                 <li class="text-sm leading-normal">
-                    <a class="text-white opacity-50" href="javascript:;">Pages</a>
+                    <a class="capitalize text-white opacity-50">{{ explode('/', request()->path())[0] }}</a>
                 </li>
                 <li class="pl-2 text-sm capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
-                    aria-current="page">Dashboard</li>
+                    aria-current="page">{{ explode('/', request()->path())[1] }}</li>
             </ol>
-            <h6 class="mb-0 font-bold capitalize text-white">Dashboard</h6>
+            <h6 class="mb-0 font-bold capitalize text-white">{{ explode('/', request()->path())[1] }}</h6>
         </nav>
 
         <div class="mt-2 flex grow items-center sm:mr-6 sm:mt-0 md:mr-0 lg:flex lg:basis-auto">
