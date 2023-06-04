@@ -77,6 +77,15 @@
                                 stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
+                            <script>
+                                var closeMenuButton = document.querySelector('.sm\\:hidden button');
+                                var menu = document.querySelector('.sm\\:hidden');
+
+                                function closeMenu() {
+                                    menu.style.display = 'none';
+                                }
+                                closeMenuButton.addEventListener('click', closeMenu);
+                            </script>
                         </button>
                     </div>
                     <div class="mt-6 flow-root">
@@ -642,7 +651,7 @@
             </div>
         </form>
     </div>
-    s
+
     {{--  End Contact Section  --}}
 
 </body>
