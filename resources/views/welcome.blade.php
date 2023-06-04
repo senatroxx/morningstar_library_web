@@ -39,8 +39,25 @@
                     <a class="text-sm font-semibold leading-6 text-gray-900" href="#">FAQ</a>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                    @guest('user') @guest('admin')
                     <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        href="{{ route('login') }}">Log in</a>
+                        href="{{ route('login') }}">Login</a>
+                    @endguest @endguest
+
+                    @auth('user')
+                        <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            href="#">
+                            {{ Auth::guard('user')->user()->name }}
+                        </a>
+                    @endauth
+
+                    @auth('admin')
+                        <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            href={{ route('admin.index') }}>
+                            Dashboard
+                        </a>
+                    @endauth
+
                 </div>
             </nav>
             <!-- Mobile menu, show/hide based on menu open state. -->
@@ -81,8 +98,24 @@
                                     href="#">FAQ</a>
                             </div>
                             <div class="py-6">
+                                @guest('user') @guest('admin')
                                 <a class="-mx-3 block rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                    href="login">Log in</a>
+                                    href="{{ route('login') }}">Login</a>
+                                @endguest @endguest
+
+                                @auth('user')
+                                    <a class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white"
+                                        href="#">
+                                        {{ Auth::guard('user')->user()->name }}
+                                    </a>
+                                @endauth
+
+                                @auth('admin')
+                                    <a class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white"
+                                        href={{ route('admin.index') }}>
+                                        Dashboard
+                                    </a>
+                                @endauth
                             </div>
                         </div>
                     </div>
