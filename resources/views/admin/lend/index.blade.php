@@ -87,7 +87,7 @@
                                     <td
                                         class="whitespace-nowrap border-b bg-transparent p-2 align-middle shadow-transparent dark:border-white/40">
                                         <p class="mb-0 px-2 py-1 text-sm leading-normal dark:text-white">
-                                            {{ $lend->book->title }}
+                                            {{ Str::limit($lend->book->title, 60) }}
                                         </p>
                                     </td>
                                     <td
