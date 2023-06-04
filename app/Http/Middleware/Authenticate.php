@@ -11,12 +11,13 @@ class Authenticate extends Middleware
     /**
      * Get the path the user should be redirected to when they are not authenticated.
      */
-    protected function redirectTo(Request $request):  ? string
+    protected function redirectTo(Request $request, string...$guards)
     {
-        if (Auth::guard('user')->check()) {
-            abort(403, 'You are not authorized to access this page.');
+        foreach ($guards as $guard) {
+            if (!$this->auth->guard($guard)->check()) {
+                // Handle unauthorized access
+                return abort(401, 'Unauthorized');
+            }
         }
-
-        return $request->expectsJson() ? null : route('login');
     }
 }

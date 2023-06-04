@@ -11,14 +11,14 @@ class RegisterController extends Controller
 {
     public function show()
     {
-        return view('auth.register');
+        return view('register');
     }
 
     public function store(RegisterRequest $request)
     {
         $attributes = $request->validated();
 
-        $user = User::create([
+        User::create([
             ...$attributes,
             'password' => bcrypt($attributes['password']),
             'role_id' => Role::where('name', 'user')->first()->id,
