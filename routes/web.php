@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LendController;
 use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\UserController;
@@ -44,9 +45,7 @@ Route::prefix("auth")->group(function () {
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {
-    Route::get('dashboard', function () {
-        return view('admin.index');
-    })->name('index');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('index');
 
     Route::prefix('books')->group(function () {
         Route::get('/', [BookController::class, 'index'])->name('books.index');
