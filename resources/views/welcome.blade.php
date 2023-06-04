@@ -39,8 +39,8 @@
                     <a class="text-sm font-semibold leading-6 text-gray-900" href="#">FAQ</a>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a class="mb-7 rounded-full bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        href="login">Log in <span aria-hidden="true">&rarr;</span></a>
+                    <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        href="{{ route('login') }}">Log in</a>
                 </div>
             </nav>
             <!-- Mobile menu, show/hide based on menu open state. -->
@@ -106,7 +106,7 @@
                     Supported Multi - Platform</p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                     <a class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        href="register">Sign Up!</a>
+                        href="{{ route('register') }}">Sign Up!</a>
                     <a class="text-sm font-semibold leading-6 text-gray-900"
                         href="https://github.com/senatroxx/morningstar_library_web">Star on Github <span
                             aria-hidden="true">→</span></a>
@@ -615,3 +615,4 @@
 </body>
 
 </html>
+
