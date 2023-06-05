@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Morningstar Library</title>
+    <link rel="stylesheet" href="css/style.css">
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     @vite('resources/css/app.css')
+
 </head>
 
 <body>
@@ -17,150 +20,129 @@
             <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div class="flex lg:flex-1">
                     <a class="-m-1.5 p-1.5" href="#">
-                        <img src="https://i.postimg.cc/SKymrBTQ/logo.png" alt="" width="200px"
-                            style="margin-left: 20px">
+                        <img src="https://i.postimg.cc/SKymrBTQ/logo.png" alt="" width="200px">
                     </a>
                 </div>
-                <div class="flex lg:hidden">
-                    <button class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                        type="button">
-                        <span class="sr-only">Open main menu</span>
 
+                <div class="flex items-center lg:hidden">
+                    <button class="absolute right-4 block lg:hidden" id="hamburger" name="hamburger" type="button">
+                        <span class="hamburger-line origin-top-left transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line origin-bottom-left transition duration-300 ease-in-out"></span>
                     </button>
+                    <nav class="dark:bg-dark absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg dark:shadow-slate-500 lg:static lg:block lg:max-w-full lg:rounded-none lg:bg-transparent lg:shadow-none lg:dark:bg-transparent"
+                        id="nav-menu">
+                        <ul class="block lg:flex">
+                            <li class="group">
+                                <a class="text-dark mx-8 flex py-2 text-base group-hover:text-primary dark:text-white"
+                                    href="#home">Home</a>
+                            </li>
+                            <li class="group">
+                                <a class="text-dark mx-8 flex py-2 text-base group-hover:text-primary dark:text-white"
+                                    href="#about">Feature</a>
+                            </li>
+                            <li class="group">
+                                <a class="text-dark mx-8 flex py-2 text-base group-hover:text-primary dark:text-white"
+                                    href="#portfolio">About</a>
+                            </li>
+                            <li class="group">
+                                <a class="text-dark mx-8 flex py-2 text-base group-hover:text-primary dark:text-white"
+                                    href="#clients">Team</a>
+                            </li>
+                            <li class="group">
+                                <a class="text-dark mx-8 flex py-2 text-base group-hover:text-primary dark:text-white"
+                                    href="#blog">FAQ</a>
+                            </li>                  
+                         </ul>
+                        
+                        <div class="px-4 py-9">
+                            @guest('user') @guest('admin')
+                            <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                href="{{ route('login') }}">Login</a>
+                            @endguest @endguest
+                    
+                            @auth('user')
+                                <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    href="#">
+                                    {{ Auth::guard('user')->user()->name }}
+                                </a>
+                            @endauth
+                    
+                            @auth('admin')
+                                <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    href={{ route('admin.index') }}>
+                                    Dashboard
+                                </a>
+                            @endauth
+        
+                         </div>
+                    </nav>
                 </div>
-                <div class="mb-7 hidden lg:flex lg:gap-x-12">
-                    <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Home</a>
 
-                    <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Features</a>
 
-                    <a class="text-sm font-semibold leading-6 text-gray-900" href="#">About</a>
+    <div class="nav-container mb-7  hidden justify-center lg:flex lg:gap-x-20">
+        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Home</a>
 
-                    <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Team</a>
-                    <a class="text-sm font-semibold leading-6 text-gray-900" href="#">FAQ</a>
-                </div>
-                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    @guest('user') @guest('admin')
-                    <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        href="{{ route('login') }}">Login</a>
-                    @endguest @endguest
+        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Features</a>
 
-                    @auth('user')
-                        <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            href="#">
-                            {{ Auth::guard('user')->user()->name }}
-                        </a>
-                    @endauth
+        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">About</a>
 
-                    @auth('admin')
-                        <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            href={{ route('admin.index') }}>
-                            Dashboard
-                        </a>
-                    @endauth
+        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">Team</a>
+        <a class="text-sm font-semibold leading-6 text-gray-900" href="#">FAQ</a>
+    </div>
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        @guest('user') @guest('admin')
+        <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            href="{{ route('login') }}">Login</a>
+        @endguest @endguest
 
-                </div>
-            </nav>
-            <!-- Mobile menu, show/hide based on menu open state. -->
-            <div class="sm:hidden" role="dialog" aria-modal="true">
-                <div class="fixed inset-0 bg-gray-900/50" aria-hidden="true"></div>
+        @auth('user')
+            <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                href="#">
+                {{ Auth::guard('user')->user()->name }}
+            </a>
+        @endauth
 
-                <div
-                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div class="flex items-center justify-between">
-                        <a class="-m-1.5 p-1.5" href="#">
-                            <span class="sr-only">Morningstar Library</span>
-                            <img class="h-8 w-auto" src="https://i.postimg.cc/SKymrBTQ/logo.png" alt="">
-                        </a>
-                        <button class="-m-2.5 rounded-md p-2.5 text-gray-700" type="button">
-                            <span class="sr-only">Close menu</span>
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                            <script>
-                                var closeMenuButton = document.querySelector('.sm\\:hidden button');
-                                var menu = document.querySelector('.sm\\:hidden');
+        @auth('admin')
+            <a class="mb-7 rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                href={{ route('admin.index') }}>
+                Dashboard
+            </a>
+        @endauth
 
-                                function closeMenu() {
-                                    menu.style.display = 'none';
-                                }
-                                closeMenuButton.addEventListener('click', closeMenu);
-                            </script>
-                        </button>
-                    </div>
-                    <div class="mt-6 flow-root">
-                        <div class="-my-6 divide-y divide-gray-500/10">
-                            <div class="space-y-2 py-6">
-                                <a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                    href="#">Home</a>
+     </div>
+    </nav>
+</header>
 
-                                <a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                    href="#">Features</a>
-
-                                <a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                    href="#">About</a>
-
-                                <a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                    href="#">Team</a>
-
-                                <a class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                    href="#">FAQ</a>
-                            </div>
-                            <div class="py-6">
-                                @guest('user') @guest('admin')
-                                <a class="-mx-3 block rounded-lg bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                    href="{{ route('login') }}">Login</a>
-                                @endguest @endguest
-
-                                @auth('user')
-                                    <a class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white"
-                                        href="#">
-                                        {{ Auth::guard('user')->user()->name }}
-                                    </a>
-                                @endauth
-
-                                @auth('admin')
-                                    <a class="signUpBtn rounded-lg bg-slate-900 bg-opacity-20 px-6 py-3 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-white"
-                                        href={{ route('admin.index') }}>
-                                        Dashboard
-                                    </a>
-                                @endauth
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <div class="relative isolate px-6 pt-14 lg:px-8">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-                aria-hidden="true">
-                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-                </div>
-            </div>
-
-            <div class="x-auto py-32 text-center sm:py-48 lg:py-56">
-                <img class="mx-auto mb-7" src="https://i.postimg.cc/15BQDj4w/logo.png" alt="">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Open - Source Library
-                    Application</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Made with Tailwind and Laravel.
-                    Supported Multi - Platform</p>
-                <div class="mt-10 flex items-center justify-center gap-x-6">
-                    <a class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                        href="{{ route('register') }}">Sign Up!</a>
-                    <a class="text-sm font-semibold leading-6 text-gray-900"
-                        href="https://github.com/senatroxx/morningstar_library_web">Star on Github <span
-                            aria-hidden="true">→</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">
-            <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                 style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
             </div>
         </div>
+
+        <div class="x-auto py-32 text-center sm:py-48 lg:py-56">
+            <img class="mx-auto mb-7" src="https://i.postimg.cc/15BQDj4w/logo.png" alt="">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Open - Source Library
+                Application</h1>
+            <p class="mt-6 text-lg leading-8 text-gray-600">Made with Tailwind and Laravel.
+                Supported Multi - Platform</p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+                <a class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    href="{{ route('register') }}">Sign Up!</a>
+                <a class="text-sm font-semibold leading-6 text-gray-900"
+                    href="https://github.com/senatroxx/morningstar_library_web">Star on Github <span
+                        aria-hidden="true">→</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+        aria-hidden="true">
+        <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+        </div>
+    </div>
     </div>
     </div>
     {{--  End Hero Section  --}}
@@ -651,9 +633,9 @@
             </div>
         </form>
     </div>
-
     {{--  End Contact Section  --}}
 
+    <script src="js/script.js"></script>
 </body>
 
 </html>
