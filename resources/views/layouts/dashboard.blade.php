@@ -31,7 +31,7 @@
     <div class="absolute min-h-75 w-full bg-blue-500 dark:hidden"></div>
     @include('layouts.partials.sidebar')
 
-    <main class="relative h-full max-h-screen min-h-screen rounded-xl transition-all duration-200 ease-in-out xl:ml-68">
+    <main class="relative h-full min-h-screen rounded-xl transition-all duration-200 ease-in-out xl:ml-68">
         @include('layouts.partials.navbar')
         <div class="mx-auto w-full px-6 py-6">
             <div class="-mx-3 flex flex-wrap">
