@@ -37,11 +37,14 @@ class BookController extends Controller
     {
         $attributes = $request->validated();
 
-        $path = Storage::disk('public')->put('thumbnails', $request->file('thumbnail'));
+        $path = Storage::disk('google')->put('thumbnails', $request->file('thumbnail'));
+        $file = Storage::disk('google')->getAdapter()->getUrl($path);
+
 
         $book = Book::create([
             ...$attributes,
-            'thumbnail' => config('app.url') . '/storage/' . $path,
+            'thumbnail' => $file,
+            'thumbnail_path' => $path,
         ]);
 
         $book->categories()->sync($attributes['categories_id']);
@@ -62,10 +65,13 @@ class BookController extends Controller
         $attributes = $request->validated();
 
         if ($request->hasFile('thumbnail')) {
-            $filename = explode('/', $book->thumbnail);
-            Storage::disk('public')->delete('thumbnails/' . $filename[array_key_last($filename)]);
-            $path = Storage::disk('public')->put('thumbnails', $request->file('thumbnail'));
-            $attributes['thumbnail'] = config('app.url') . '/storage/' . $path;
+            if ($book->thumbnail_path) {
+                Storage::disk('google')->delete($book->thumbnail_path);
+            }
+            $path = Storage::disk('google')->put('thumbnails', $request->file('thumbnail'));
+            $file = Storage::disk('google')->getAdapter()->getUrl($path);
+            $attributes['thumbnail'] = $file;
+            $attributes['thumbnail_path'] = $path;
         }
 
         $book->update($attributes);
@@ -78,8 +84,9 @@ class BookController extends Controller
 
     public function destroy(Book $book)
     {
-        $filename = explode('/', $book->thumbnail);
-        Storage::disk('public')->delete('thumbnails/' . $filename[array_key_last($filename)]);
+        if ($book->thumbnail_path) {
+            Storage::disk('google')->delete($book->thumbnail_path);
+        }
 
         $book->delete();
 

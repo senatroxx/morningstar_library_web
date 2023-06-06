@@ -24,6 +24,7 @@ class Book extends Model
         'slug',
         'description',
         'thumbnail',
+        'thumbnail_path',
         'quantity',
         'publisher_id',
         'published_at',
