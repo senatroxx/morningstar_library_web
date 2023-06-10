@@ -26,6 +26,10 @@ Route::get("/", function () {
     return view("welcome");
 })->name("user.index");
 
+Route::get('books', function() {
+    return view('user.book');
+});
+
 Route::prefix("auth")->group(function () {
     Route::prefix("register")
         ->middleware("guest:admin,user")

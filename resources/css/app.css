@@ -2,7 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-.active {
+.scrolled {
+    @apply backdrop-blur  bg-white/70 lg:border-b lg:border-white/10;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+#nav-content {
+    animation-duration: 0.3s;
+}
+
+#nav-content.hidden {
+    animation-name: slideOut;
+}
+
+#nav-content.show {
+    animation-name: slideIn;
+}
+
+.owl-carousel {
+    @apply relative;
+}
+
+.owl-stage-outer {
+    @apply mx-10 pb-3 z-100;
+}
+
+.owl-nav {
+    @apply absolute inset-y-0 w-full flex justify-between items-center mt-0 !important;
+    z-index: 1;
+}
+
+.owl-prev,
+.owl-next {
+    @apply text-blue-500  !important;
+}
+
+.owl-prev:hover,
+.owl-next:hover {
+    @apply text-blue-500 bg-transparent !important;
+}
+
+.item-active {
     @apply font-semibold text-slate-700 rounded-lg bg-blue-500/13;
 }
 

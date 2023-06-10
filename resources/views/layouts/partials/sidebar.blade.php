@@ -22,7 +22,7 @@
     <div class="block max-h-screen w-auto grow basis-full items-center overflow-auto">
         <ul class="mb-0 flex flex-col pl-0">
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand {{ request()->routeIs('admin.index') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                <a class="ease-nav-brand {{ request()->routeIs('admin.index') ? 'item-active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
                     href={{ route('admin.index') }}>
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-1.5">
@@ -34,7 +34,7 @@
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand {{ request()->routeIs('admin.books.*') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                <a class="ease-nav-brand {{ request()->routeIs('admin.books.*') ? 'item-active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
                     href={{ route('admin.books.index') }}>
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-1.5">
@@ -46,7 +46,7 @@
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand {{ request()->routeIs('admin.categories.*') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                <a class="ease-nav-brand {{ request()->routeIs('admin.categories.*') ? 'item-active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
                     href="{{ route('admin.categories.index') }}">
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-1.5">
@@ -59,7 +59,7 @@
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand {{ request()->routeIs('admin.authors.*') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                <a class="ease-nav-brand {{ request()->routeIs('admin.authors.*') ? 'item-active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
                     href="{{ route('admin.authors.index') }}">
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center fill-current stroke-0 text-center xl:p-1.5">
@@ -71,7 +71,7 @@
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand {{ request()->routeIs('admin.publishers.*') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                <a class="ease-nav-brand {{ request()->routeIs('admin.publishers.*') ? 'item-active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
                     href="{{ route('admin.publishers.index') }}">
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-1.5">
@@ -83,7 +83,7 @@
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class="ease-nav-brand {{ request()->routeIs('admin.users.*') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                <a class="ease-nav-brand {{ request()->routeIs('admin.users.*') ? 'item-active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
                     href="{{ route('admin.users.index') }}">
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-1.5">
@@ -95,7 +95,7 @@
             </li>
 
             <li class="mb-2 mt-0.5 w-full">
-                <a class="ease-nav-brand {{ request()->routeIs('admin.lends.*') ? 'active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
+                <a class="ease-nav-brand {{ request()->routeIs('admin.lends.*') ? 'item-active' : '' }} mx-2 my-0 flex items-center whitespace-nowrap px-4 py-2.7 text-sm transition-colors dark:text-white dark:opacity-80"
                     href="{{ route('admin.lends.index') }}">
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-1.5">

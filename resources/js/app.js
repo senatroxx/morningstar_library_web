@@ -1,3 +1,8 @@
+import.meta.glob(["../images/**", "../fonts/**"]);
+
+import Swiper from "swiper";
+import "swiper/css";
+
 import flatpickr from "flatpickr";
 import "./bootstrap";
 import "./plugins/perfect-scrollbar.min";
@@ -13,3 +18,4 @@ import "./tooltips";
 // import "./dropdown";
 
 window.flatpickr = flatpickr;
+window.Swiper = Swiper;
