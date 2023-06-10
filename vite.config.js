@@ -15,4 +15,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        // disable image compression
+        assetsInlineLimit: 0,
+    },
 });

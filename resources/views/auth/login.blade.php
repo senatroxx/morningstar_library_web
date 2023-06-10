@@ -10,48 +10,61 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="relative bg-base-200">
-    <div class="mx-auto flex min-h-screen flex-col items-center justify-center gap-4 lg:flex-row-reverse">
-        <div class="mt-10 max-w-sm text-center lg:mt-0 lg:text-left">
-            <img class="mx-auto mb-4 h-32 w-auto lg:ml-0" src="https://i.postimg.cc/15BQDj4w/logo.png" alt="Workflow">
-            <h1 class="text-3xl font-bold">Login now!</h1>
-            <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
-                exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-        </div>
-
-        <div class="card w-full max-w-sm flex-shrink-0 rounded-b-0 bg-base-100 shadow-2xl lg:rounded-lg">
+<body class="bg-[#f8f8f8]">
+    <div class="mx-auto min-h-screen max-w-screen-xl p-4 lg:flex lg:items-center lg:justify-center">
+        <div class="h-full w-full rounded-xl bg-white shadow-sm">
             <form action="{{ route('login') }}" method="post">
                 @csrf
-                <div class="card-body">
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Email</span>
-                        </label>
-                        <input class="@error('email') input-error @enderror input-bordered input" type="email"
-                            name="email" required value="{{ old('email') }}" />
-                        @error('email')
-                            <label class="label">
-                                <span class="label-text-alt text-red-600">{{ $message }}</span>
-                            </label>
-                        @enderror
+                <div class="flex h-full gap-4 p-4">
+                    <div class="hidden lg:block lg:w-1/2">
+                        <img class="h-160 w-full rounded-xl object-cover shadow"
+                            src="{{ Vite::asset('resources/images/library.png') }}" alt="Library">
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Password</span>
-                        </label>
-                        <input class="@error('email') input-error @enderror input-bordered input" type="password"
-                            name="password" required />
-                    </div>
+                    <div class="flex w-full flex-col justify-center p-4 md:p-24 lg:w-1/2">
+                        <img class="mx-auto w-52" src="{{ Vite::asset('resources/images/logo.png') }}" alt="Logo">
+                        <h2 class="mt-6 text-xl font-semibold text-gray-800">Login</h2>
+                        <p class="text-sm text-gray-700">Enter email and password to borrow some books!</p>
 
-                    <div class="form-control mt-1">
-                        <button class="btn-primary btn" type="submit">Login</button>
+                        <div class="mt-4">
+                            <label class="text-xs text-gray-600" for="email">Email Address</label>
+                            <input
+                                class="ease @error('email') border-red-600 @else border-gray-300 @enderror block w-full appearance-none rounded-xl border border-solid px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 caret-blue-500 shadow-xl outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
+                                id="email" type="text" name="email" autocomplete="off" required
+                                placeholder="johndoe@example.com" />
+                            @error('email')
+                                <label class="label">
+                                    <span class="text-xs text-red-600">{{ $message }}</span>
+                                </label>
+                            @enderror
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="text-xs text-gray-600" for="password">Password</label>
+                            <input
+                                class="ease block w-full appearance-none rounded-xl border border-solid border-gray-300 px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 caret-blue-500 shadow-xl outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
+                                id="password" type="password" name="password" autocomplete="off" required
+                                placeholder="******" />
+                        </div>
+
+                        <button
+                            class="mt-4 inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-6 py-3 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
+                            type="submit">
+                            Login
+                        </button>
+
+                        <a class="mt-2 text-right text-xs text-gray-600 hover:text-blue-600" href="#">
+                            Forgot Password?
+                        </a>
+
+                        <div class="mt-4 text-center">
+                            <span class="text-sm text-gray-600">
+                                Not a member?
+                                <a class="hover:text-blue-600" href="{{ route('register') }}">
+                                    Sign Up!
+                                </a>
+                            </span>
+                        </div>
                     </div>
-                    <a class="link-hover label-text-alt link text-right" href="#">Forgot password?</a>
-                    <p class="mt-10 text-center text-sm text-indigo-50">
-                        Not a member?
-                        <a class="font-semibold leading-6 text-indigo-50 hover:text-indigo-500" href="register">Sign
-                            Up!</a>
-                    </p>
                 </div>
             </form>
         </div>
