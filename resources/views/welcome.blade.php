@@ -39,12 +39,91 @@
 
                 <!-- Menu #2 -->
                 <div class="ml-auto hidden md:flex md:items-center">
+                    @guest('user') @guest('admin')
                     <a class="rounded-md px-4 py-2 text-sm font-semibold text-slate-900 hover:text-slate-700"
                         href="{{ route('login') }}">Login</a>
                     <span class="py-2 text-sm text-gray-600">or</span>
                     <a class="ml-4 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white"
                         href="{{ route('register') }}">Register
                         Now!</a>
+                    @endguest @endguest
+
+                    @auth('user')
+                        <div id="dropdown">
+                            <button class="flex items-center rounded-md px-4 py-2 text-sm font-semibold text-slate-900"
+                                id="dropdown-button">
+                                <i class="fas fa-user-circle mr-2 text-2xl"></i>
+                                Hi, {{ explode(' ', Auth::guard('user')->user()->name)[0] }}!
+                                <i class="fa fa-caret-down ml-2 transition-all ease-in-out" id="dropdown-caret"></i>
+                            </button>
+                            <div class="relative">
+                                <div class="absolute right-0 top-1 z-10 hidden w-full min-w-64 rounded-md border border-gray-200 bg-white p-3 shadow transition-all duration-300"
+                                    id="dropdown-content">
+                                    <ul
+                                        class="[&>li]:cursor-pointer [&>li]:rounded-md [&>li]:px-2 [&>li]:py-1 [&>li]:text-sm [&>li]:font-semibold [&>li]:text-slate-900 [&>li]:transition-all hover:[&>li]:bg-gray-200">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-user-circle mr-2 text-4xl"></i>
+                                            <div class="truncate">
+                                                <p class="truncate">{{ Auth::guard('user')->user()->name }}</p>
+                                                <p class="text-xs font-normal text-gray-600">
+                                                    {{ Auth::guard('user')->user()->email }}</p>
+                                            </div>
+                                        </li>
+                                        <div class="my-1 w-full border border-gray-300"></div>
+                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="#">Lends</a></li>
+                                        <div class="my-1 w-full border border-gray-300"></div>
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="post">
+                                                @csrf
+                                                <button class="text-red-600" type="submit" href="#">Logout</button
+                                                    type="submit">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endauth
+
+                    @auth('admin')
+                        <div id="dropdown">
+                            <button class="flex items-center rounded-md px-4 py-2 text-sm font-semibold text-slate-900"
+                                id="dropdown-button">
+                                <i class="fas fa-user-circle mr-2 text-2xl"></i>
+                                Hi, {{ explode(' ', Auth::guard('admin')->user()->name)[0] }}!
+                                <i class="fa fa-caret-down ml-2 transition-all ease-in-out" id="dropdown-caret"></i>
+                            </button>
+                            <div class="relative">
+                                <div class="absolute right-0 top-1 z-10 hidden w-full min-w-64 rounded-md border border-gray-200 bg-white p-3 shadow transition-all duration-300"
+                                    id="dropdown-content">
+                                    <ul
+                                        class="[&>li]:cursor-pointer [&>li]:rounded-md [&>li]:px-2 [&>li]:py-1 [&>li]:text-sm [&>li]:font-semibold [&>li]:text-slate-900 [&>li]:transition-all hover:[&>li]:bg-gray-200">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-user-circle mr-2 text-4xl"></i>
+                                            <div class="truncate">
+                                                <p class="truncate">{{ Auth::guard('admin')->user()->name }}</p>
+                                                <p class="text-xs font-normal text-gray-600">
+                                                    {{ Auth::guard('admin')->user()->email }}</p>
+                                            </div>
+                                        </li>
+                                        <div class="my-1 w-full border border-gray-300"></div>
+                                        <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
+                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="#">Lends</a></li>
+                                        <div class="my-1 w-full border border-gray-300"></div>
+                                        <li>
+                                            <form action="{{ route('logout') }}" method="post">
+                                                @csrf
+                                                <button class="text-red-600" type="submit" href="#">Logout</button
+                                                    type="submit">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endauth
                 </div>
 
                 <!-- Mobile menu button -->
@@ -66,21 +145,76 @@
                     class="dark:highlight-white/5 fixed right-4 top-4 w-full max-w-xs rounded-lg bg-white p-6 text-base font-semibold text-slate-900 shadow-lg dark:bg-slate-800 dark:text-slate-400">
                     <button
                         class="absolute right-5 top-5 flex h-8 w-8 items-center justify-center text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
-                        id="nav-toggle" type="button" tabindex="0"><span class="sr-only">Close navigation</span><svg
-                            class="h-2.5 w-2.5 overflow-visible" viewBox="0 0 10 10" aria-hidden="true">
+                        id="nav-toggle" type="button" tabindex="0"><span class="sr-only">Close
+                            navigation</span><svg class="h-2.5 w-2.5 overflow-visible" viewBox="0 0 10 10"
+                            aria-hidden="true">
                             <path d="M0 0L10 10M10 0L0 10" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round"></path>
                         </svg>
                     </button>
                     <ul class="space-y-6">
-                        <li><a class="hover:text-sky-500 dark:hover:text-sky-400" href="/docs/installation">Docs</a>
+                        <li><a class="hover:text-slate-800 dark:hover:text-sky-400"
+                                href="{{ route('user.index') }}">Home</a>
                         </li>
-                        <li><a class="hover:text-sky-500 dark:hover:text-sky-400"
-                                href="https://tailwindui.com/?ref=top">Components</a></li>
-                        <li><a class="hover:text-sky-500 dark:hover:text-sky-400" href="/blog">Blog</a></li>
-                        <li><a class="hover:text-sky-500 dark:hover:text-sky-400" href="/showcase">Showcase</a></li>
-                        <li><a class="hover:text-sky-500 dark:hover:text-sky-400"
-                                href="https://github.com/tailwindlabs/tailwindcss">GitHub</a></li>
+                        <li><a class="hover:text-slate-800 dark:hover:text-sky-400" href="#">Book</a></li>
+                        <div class="w-full border border-gray-300"></div>
+                        @guest('user') @guest('admin')
+                        <li>
+                            <a class="hover:text-slate-800 dark:hover:text-sky-400" href="{{ route('login') }}">
+                                Login
+                            </a>
+                        </li>
+                        <li>
+                            <a class="hover:text-slate-800 dark:hover:text-sky-400" href="{{ route('register') }}">
+                                Register
+                            </a>
+                        </li>
+                        @endguest @endguest
+
+                        @auth('user')
+                            <li class="flex items-center">
+                                <i class="fas fa-user-circle mr-2 text-4xl"></i>
+                                <div class="truncate">
+                                    <p class="truncate">{{ Auth::guard('user')->user()->name }}</p>
+                                    <p class="text-xs font-normal text-gray-600">
+                                        {{ Auth::guard('user')->user()->email }}</p>
+                                </div>
+                            </li>
+
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Lends</a></li>
+                            <div class="w-full border border-gray-300"></div>
+                            <li>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button class="text-red-600" type="submit" href="#">Logout</button
+                                        type="submit">
+                                </form>
+                            </li>
+                        @endauth
+
+                        @auth('admin')
+                            <li class="flex items-center">
+                                <i class="fas fa-user-circle mr-2 text-4xl"></i>
+                                <div class="truncate">
+                                    <p class="truncate">{{ Auth::guard('admin')->user()->name }}</p>
+                                    <p class="text-xs font-normal text-gray-600">
+                                        {{ Auth::guard('admin')->user()->email }}</p>
+                                </div>
+                            </li>
+                            <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Lends</a></li>
+                            <div class="w-full border border-gray-300"></div>
+                            <li>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button class="text-red-600" type="submit" href="#">Logout</button
+                                        type="submit">
+                                </form>
+                            </li>
+                        @endauth
+
                     </ul>
                 </div>
             </div>
@@ -288,6 +422,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const Dropdown = (dropdownId, buttonId, contentId, caretId) => {
+            const dropdownButton = document.getElementById(buttonId);
+            const dropdownContent = document.getElementById(contentId);
+            const caret = document.getElementById(caretId);
+
+            dropdownButton.addEventListener('click', () => {
+                if (dropdownContent.classList.contains('hidden')) {
+                    dropdownContent.classList.remove('hidden');
+                    dropdownContent.classList.remove('opacity-0');
+                    dropdownContent.classList.remove('invisible');
+                    dropdownContent.classList.add('animate-fade-in');
+                    caret.classList.add('rotate-180');
+                } else {
+                    dropdownContent.classList.remove('animate-fade-in');
+                    dropdownContent.classList.add('animate-fade-out');
+                    dropdownContent.addEventListener('animationend', () => {
+                        dropdownContent.classList.add('hidden');
+                        dropdownContent.classList.remove('animate-fade-out');
+                        dropdownContent.classList.add('opacity-0');
+                        dropdownContent.classList.add('invisible');
+                        caret.classList.remove('rotate-180');
+                    }, {
+                        once: true
+                    });
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!dropdownButton.contains(event.target)) {
+                    dropdownContent.classList.add('hidden');
+                    dropdownContent.classList.remove('animate-fade-in');
+                    dropdownContent.classList.remove('animate-fade-out');
+                    dropdownContent.classList.add('opacity-0');
+                    dropdownContent.classList.add('invisible');
+                    caret.classList.remove('rotate-180');
+                }
+            });
+        };
+
+        // Initialize dropdowns
+        Dropdown('dropdown', 'dropdown-button', 'dropdown-content', 'dropdown-caret');
+    </script>
     <script>
         var navToggles = document.querySelectorAll('#nav-toggle');
         var mobileMenu = document.getElementById('mobile-menu');
