@@ -302,9 +302,14 @@
             </div>
             <div class="owl-carousel owl-theme crl">
                 @foreach ($recentBooks as $book)
-                    <div class="w-50 rounded bg-white shadow-md">
-                        <img class="h-60 w-full object-contain" src="{{ $book->thumbnail }}"
-                            alt="{{ $book->title }}">
+                    <div class="relative w-50 rounded bg-white shadow-md">
+                        <div class="absolute inset-0 z-0 h-60 w-full bg-cover bg-center"
+                            style="background-image: url({{ $book->thumbnail }})">
+                        </div>
+                        <div class="z-10 bg-white/10 backdrop-blur">
+                            <img class="z-10 h-60 w-full object-contain" src="{{ $book->thumbnail }}"
+                                alt="{{ $book->title }}">
+                        </div>
                         <div class="p-4">
                             <p class="truncate text-xs text-gray-600">
                                 @foreach ($book->authors as $category)
@@ -327,9 +332,14 @@
             </div>
             <div class="owl-carousel owl-theme crl">
                 @foreach ($randomBooks as $book)
-                    <div class="w-50 rounded bg-white shadow-md">
-                        <img class="h-60 w-full object-contain" src="{{ $book->thumbnail }}"
-                            alt="{{ $book->title }}">
+                    <div class="relative w-50 rounded bg-white shadow-md">
+                        <div class="absolute inset-0 z-0 h-60 w-full bg-cover bg-center"
+                            style="background-image: url({{ $book->thumbnail }})">
+                        </div>
+                        <div class="z-10 bg-white/10 backdrop-blur">
+                            <img class="z-10 h-60 w-full object-contain" src="{{ $book->thumbnail }}"
+                                alt="{{ $book->title }}">
+                        </div>
                         <div class="p-4">
                             <p class="truncate text-xs text-gray-600">
                                 @foreach ($book->authors as $category)
