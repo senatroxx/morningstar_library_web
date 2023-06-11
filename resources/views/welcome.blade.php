@@ -281,24 +281,12 @@
         </div>
         <div>
             <div class="owl-carousel owl-theme crl">
-                @for ($i = 0; $i < 10; $i++)
+                @foreach ($categories as $category)
                     <a class="inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-6 py-3 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
                         href="#">
-                        Fiction (20)
+                        {{ $category->name }} ({{ $category->books_count }})
                     </a>
-                    <a class="inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-6 py-3 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
-                        href="#">
-                        Scifi (12)
-                    </a>
-                    <a class="inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-6 py-3 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
-                        href="#">
-                        Drama (32)
-                    </a>
-                    <a class="inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-6 py-3 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
-                        href="#">
-                        Education (21)
-                    </a>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>
@@ -313,19 +301,22 @@
                 </h2>
             </div>
             <div class="owl-carousel owl-theme crl">
-                @for ($i = 0; $i < 12; $i++)
+                @foreach ($recentBooks as $book)
                     <div class="w-50 rounded bg-white shadow-md">
-                        <img class="w-full object-contain"
-                            src="https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.png"
-                            alt="">
+                        <img class="h-60 w-full object-contain" src="{{ $book->thumbnail }}"
+                            alt="{{ $book->title }}">
                         <div class="p-4">
-                            <p class="text-xs text-gray-600">Leila S. Chudori</p>
-                            <h2 class="text-sm text-gray-800">
-                                Laut Bercerita
+                            <p class="truncate text-xs text-gray-600">
+                                @foreach ($book->authors as $category)
+                                    {{ $category->name }}{{ $loop->last ? '' : ', ' }}
+                                @endforeach
+                            </p>
+                            <h2 class="truncate text-sm text-gray-800">
+                                {{ $book->title }}
                             </h2>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
         <div class="pt-10">
@@ -335,19 +326,22 @@
                 </h2>
             </div>
             <div class="owl-carousel owl-theme crl">
-                @for ($i = 0; $i < 12; $i++)
+                @foreach ($randomBooks as $book)
                     <div class="w-50 rounded bg-white shadow-md">
-                        <img class="w-full object-contain"
-                            src="https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.png"
-                            alt="">
+                        <img class="h-60 w-full object-contain" src="{{ $book->thumbnail }}"
+                            alt="{{ $book->title }}">
                         <div class="p-4">
-                            <p class="text-xs text-gray-600">Leila S. Chudori</p>
-                            <h2 class="text-sm text-gray-800">
-                                Laut Bercerita
+                            <p class="truncate text-xs text-gray-600">
+                                @foreach ($book->authors as $category)
+                                    {{ $category->name }}{{ $loop->last ? '' : ', ' }}
+                                @endforeach
+                            </p>
+                            <h2 class="truncate text-sm text-gray-800">
+                                {{ $book->title }}
                             </h2>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>

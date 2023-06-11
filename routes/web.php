@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get("/", function () {
-    return view("welcome");
-})->name("user.index");
+Route::get("/", [HomeController::class, "index"])->name("user.index");
 
-Route::get('books', function() {
+Route::get('books', function () {
     return view('user.book');
 });
 
