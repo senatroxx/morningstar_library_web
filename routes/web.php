@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\LendController;
 use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\User\HomeController;
@@ -25,6 +26,33 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
  */
+
+Route::prefix("auth")->group(function () {
+    Route::prefix("register")
+        ->middleware("guest:admin,user")
+        ->group(function () {
+            Route::get("/", [RegisterController::class, "show"])->name("register");
+            Route::post("/", [RegisterController::class, "store"])->name("register");
+        });
+
+    Route::prefix("forgot-password")
+        ->middleware("guest:admin,user")
+        ->group(function () {
+            Route::get("/", [PasswordController::class, "index"])->name("forgot");
+            Route::post('send-otp', [PasswordController::class, 'sendOtp'])->name("sendOtp");
+            Route::post('reset', [PasswordController::class, 'reset'])->name("reset");
+
+        });
+
+    Route::prefix("login")
+        ->middleware("guest:admin,user")
+        ->group(function () {
+            Route::get("/", [LoginController::class, "show"])->name("login");
+            Route::post("/", [LoginController::class, "login"])->name("login");
+        });
+
+    Route::post("logout", [LoginController::class, "logout"])->middleware("auth:admin,user")->name("logout");
+});
 
 Route::group(['as' => 'user.'], function () {
     Route::get("/", [HomeController::class, "index"])->name("index");
@@ -49,24 +77,6 @@ Route::group(['as' => 'user.'], function () {
             Route::put('password', [ProfileController::class, 'changePassword'])->name('profile.password');
         });
 
-});
-
-Route::prefix("auth")->group(function () {
-    Route::prefix("register")
-        ->middleware("guest:admin,user")
-        ->group(function () {
-            Route::get("/", [RegisterController::class, "show"])->name("register");
-            Route::post("/", [RegisterController::class, "store"])->name("register");
-        });
-
-    Route::prefix("login")
-        ->middleware("guest:admin,user")
-        ->group(function () {
-            Route::get("/", [LoginController::class, "show"])->name("login");
-            Route::post("/", [LoginController::class, "login"])->name("login");
-        });
-
-    Route::post("logout", [LoginController::class, "logout"])->middleware("auth:admin,user")->name("logout");
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin'], function () {

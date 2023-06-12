@@ -20,7 +20,13 @@
                         <img class="h-160 w-full rounded-xl object-cover shadow"
                             src="{{ Vite::asset('resources/images/library.png') }}" alt="Library">
                     </div>
-                    <div class="flex w-full flex-col justify-center p-4 md:p-24 lg:w-1/2">
+                    <div class="relative flex w-full flex-col justify-center p-4 md:p-24 lg:w-1/2">
+                        @if (session('success'))
+                            <div class="absolute inset-x-0 top-0 mb-4 w-full rounded-lg border border-solid border-emerald-300 bg-gradient-to-tl from-emerald-600 to-teal-500 p-4 text-white"
+                                autoalert alert-duration="5000">
+                                <span class="font-bold">{{ session('success') }}</span>
+                            </div>
+                        @endif
                         <img class="mx-auto w-52" src="{{ Vite::asset('resources/images/logo.png') }}" alt="Logo">
                         <h2 class="mt-6 text-xl font-semibold text-gray-800">Login</h2>
                         <p class="text-sm text-gray-700">Enter email and password to borrow some books!</p>
