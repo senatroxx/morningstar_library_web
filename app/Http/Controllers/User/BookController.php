@@ -16,7 +16,7 @@ class BookController extends Controller
             'Books',
             'Explore thousands of books in our online library.',
             'website',
-            [Vite::asset('resources/images/logo.png')]
+            [Vite::asset('resources/images/opengraph.jpg')]
         );
 
         $books = Book::query();

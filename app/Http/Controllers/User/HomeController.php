@@ -25,7 +25,7 @@ class HomeController extends Controller
             'borrowed books at your own pace. Rediscover the magic of reading without' .
             'limits - borrow a book from our online library today!',
             'website',
-            [Vite::asset('resources/images/logo.png')]
+            [Vite::asset('resources/images/opengraph.jpg')]
         );
 
         $categories = Category::withCount('books')->get();
