@@ -9,6 +9,13 @@ use App\Models\Lend;
 
 class LendController extends Controller
 {
+    public function index()
+    {
+        $lends = auth()->user()->lends()->with('book')->latest()->paginate(10);
+
+        return view('user.lends.index', compact('lends'));
+    }
+
     public function store(Book $book, LendRequest $request)
     {
         $attributes = $request->validated();

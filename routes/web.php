@@ -36,6 +36,7 @@ Route::group(['as' => 'user.'], function () {
     Route::prefix('lends')
         ->middleware('auth:user,admin')
         ->group(function () {
+            Route::get('/', [UserLendController::class, 'index'])->name('lends.index');
             Route::post('/{book:slug}', [UserLendController::class, 'store'])->name('lends.store');
         });
 

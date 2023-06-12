@@ -49,14 +49,13 @@
                                             </div>
                                         </li>
                                         <div class="my-1 w-full border border-gray-300"></div>
-                                        <li><a href="#">Profile</a></li>
-                                        <li><a href="#">Lends</a></li>
+                                        <li><a class="block" href="#">Profile</a></li>
+                                        <li><a class="block" href="{{ route('user.lends.index') }}">Lends</a></li>
                                         <div class="my-1 w-full border border-gray-300"></div>
                                         <li>
                                             <form action="{{ route('logout') }}" method="post">
                                                 @csrf
-                                                <button class="text-red-600" type="submit" href="#">Logout</button
-                                                    type="submit">
+                                                <button class="text-red-600" type="submit">Logout</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -87,15 +86,14 @@
                                             </div>
                                         </li>
                                         <div class="my-1 w-full border border-gray-300"></div>
-                                        <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
-                                        <li><a href="#">Profile</a></li>
-                                        <li><a href="#">Lends</a></li>
+                                        <li><a class="block" href="{{ route('admin.index') }}">Dashboard</a></li>
+                                        <li><a class="block" href="#">Profile</a></li>
+                                        <li><a class="block" href="{{ route('user.lends.index') }}">Lends</a></li>
                                         <div class="my-1 w-full border border-gray-300"></div>
                                         <li>
                                             <form action="{{ route('logout') }}" method="post">
                                                 @csrf
-                                                <button class="text-red-600" type="submit" href="#">Logout</button
-                                                    type="submit">
+                                                <button class="text-red-600" type="submit">Logout</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -135,7 +133,8 @@
                         <li><a class="hover:text-slate-800 dark:hover:text-sky-400"
                                 href="{{ route('user.index') }}">Home</a>
                         </li>
-                        <li><a class="hover:text-slate-800 dark:hover:text-sky-400" href="#">Book</a></li>
+                        <li><a class="hover:text-slate-800 dark:hover:text-sky-400"
+                                href="{{ route('user.books.index') }}">Book</a></li>
                         <div class="w-full border border-gray-300"></div>
                         @guest('user') @guest('admin')
                         <li>
@@ -161,13 +160,12 @@
                             </li>
 
                             <li><a href="#">Profile</a></li>
-                            <li><a href="#">Lends</a></li>
+                            <li><a href="{{ route('user.lends.index') }}">Lends</a></li>
                             <div class="w-full border border-gray-300"></div>
                             <li>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <button class="text-red-600" type="submit" href="#">Logout</button
-                                        type="submit">
+                                    <button class="text-red-600" type="submit">Logout</button>
                                 </form>
                             </li>
                         @endauth
@@ -183,13 +181,12 @@
                             </li>
                             <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
                             <li><a href="#">Profile</a></li>
-                            <li><a href="#">Lends</a></li>
+                            <li><a href="{{ route('user.lends.index') }}">Lends</a></li>
                             <div class="w-full border border-gray-300"></div>
                             <li>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <button class="text-red-600" type="submit" href="#">Logout</button
-                                        type="submit">
+                                    <button class="text-red-600" type="submit">Logout</button>
                                 </form>
                             </li>
                         @endauth
