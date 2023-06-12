@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $this->user->id,
-            'phone' => 'required|string|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
+            'phone' => 'required|string|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:users,phone,' . $this->user->id,
             'address' => 'required|string',
             'password' => 'nullable|string|min:8|confirmed',
             'role_id' => 'required|exists:roles,id',

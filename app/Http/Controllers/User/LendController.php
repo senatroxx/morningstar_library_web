@@ -26,15 +26,13 @@ class LendController extends Controller
 
         $book->decrement('quantity');
 
-        $lend = Lend::create([
+        Lend::create([
             ...$attributes,
             'returned' => false,
             'user_id' => auth()->id(),
             'book_id' => $book->id,
         ]);
 
-        dd($lend->toArray());
-
-        return redirect()->route('user.books.index')->with('success', 'Book lend successfully');
+        return redirect()->back()->with('success', 'Book borrowed successfully');
     }
 }

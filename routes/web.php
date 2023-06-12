@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\LendController as UserLendController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,14 @@ Route::group(['as' => 'user.'], function () {
         ->group(function () {
             Route::get('/', [UserLendController::class, 'index'])->name('lends.index');
             Route::post('/{book:slug}', [UserLendController::class, 'store'])->name('lends.store');
+        });
+
+    Route::prefix('profile')
+        ->middleware('auth:user,admin')
+        ->group(function () {
+            Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+            Route::put('/', [ProfileController::class, 'update'])->name('profile.update');
+            Route::put('password', [ProfileController::class, 'changePassword'])->name('profile.password');
         });
 
 });

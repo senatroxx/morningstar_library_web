@@ -3,6 +3,12 @@
 @section('content')
     <div
         class="relative isolate -mt-3 flex min-h-screen flex-col justify-center gap-6 bg-gradient-to-br from-blue-200 px-6 py-24 lg:px-10">
+        @if (session('success'))
+            <div class="relative mb-4 w-full rounded-lg border border-solid border-emerald-300 bg-gradient-to-tl from-emerald-600 to-teal-500 p-4 text-white"
+                autoalert alert-duration="5000">
+                <span class="font-bold">{{ session('success') }}</span>
+            </div>
+        @endif
         <div class="flex flex-col items-start justify-center gap-4 md:flex-row">
             <div class="relative flex w-full items-center justify-center rounded-xl bg-white md:w-4/12">
                 <div class="absolute inset-0 z-0 h-120 w-full rotate-180 rounded-xl bg-cover bg-center"
