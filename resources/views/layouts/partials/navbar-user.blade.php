@@ -55,7 +55,8 @@
                                         <li>
                                             <form action="{{ route('logout') }}" method="post">
                                                 @csrf
-                                                <button class="text-red-600" type="submit">Logout</button>
+                                                <button class="block w-full text-left text-red-600"
+                                                    type="submit">Logout</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -93,7 +94,8 @@
                                         <li>
                                             <form action="{{ route('logout') }}" method="post">
                                                 @csrf
-                                                <button class="text-red-600" type="submit">Logout</button>
+                                                <button class="block w-full text-left text-red-600"
+                                                    type="submit">Logout</button>
                                             </form>
                                         </li>
                                     </ul>
@@ -165,7 +167,7 @@
                             <li>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <button class="text-red-600" type="submit">Logout</button>
+                                    <button class="block w-full text-left text-red-600" type="submit">Logout</button>
                                 </form>
                             </li>
                         @endauth
@@ -186,7 +188,7 @@
                             <li>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <button class="text-red-600" type="submit">Logout</button>
+                                    <button class="block w-full text-left text-red-600" type="submit">Logout</button>
                                 </form>
                             </li>
                         @endauth
