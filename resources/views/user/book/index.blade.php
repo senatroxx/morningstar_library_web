@@ -4,7 +4,7 @@
     <div
         class="relative isolate -mt-3 flex min-h-screen flex-col justify-center gap-6 bg-gradient-to-br from-blue-200 px-6 py-24 lg:px-10">
         <form action="{{ route('user.books.index') }}" method="get">
-            <div class="mx-auto flex w-2/5 items-stretch">
+            <div class="mx-auto flex w-full items-stretch md:w-2/5">
                 <div class="relative w-full rounded-l-lg shadow-none">
                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                         <svg class="absolute h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
@@ -25,12 +25,12 @@
         <div class="flex flex-wrap justify-evenly gap-4">
             @foreach ($books as $book)
                 <a href="{{ route('user.books.show', $book->slug) }}">
-                    <div class="relative w-48 rounded bg-white shadow-md">
-                        <div class="absolute inset-0 z-0 h-56 w-full rounded-t bg-cover bg-center"
+                    <div class="relative w-36 rounded bg-white shadow-md md:w-48">
+                        <div class="absolute inset-0 z-0 h-44 w-full rounded-t bg-cover bg-center md:h-56"
                             style="background-image: url({{ $book->thumbnail }})">
                         </div>
                         <div class="z-10 rounded-t bg-white/10 backdrop-blur">
-                            <img class="z-10 h-56 w-full object-contain" src="{{ $book->thumbnail }}"
+                            <img class="z-10 h-44 w-full object-contain md:h-56" src="{{ $book->thumbnail }}"
                                 alt="{{ $book->title }}">
                         </div>
                         <div class="p-4">

@@ -3,8 +3,8 @@
 @section('content')
     <div
         class="relative isolate -mt-3 flex min-h-screen flex-col justify-center gap-6 bg-gradient-to-br from-blue-200 px-6 py-24 lg:px-10">
-        <div class="flex items-start justify-center gap-4">
-            <div class="relative flex w-4/12 items-center justify-center rounded-xl bg-white">
+        <div class="flex flex-col items-start justify-center gap-4 md:flex-row">
+            <div class="relative flex w-full items-center justify-center rounded-xl bg-white md:w-4/12">
                 <div class="absolute inset-0 z-0 h-120 w-full rotate-180 rounded-xl bg-cover bg-center"
                     style="background-image: url({{ $book->thumbnail }})">
                 </div>
@@ -13,13 +13,13 @@
                     <img class="z-10 h-75 w-full object-contain" src="{{ $book->thumbnail }}" alt="{{ $book->title }}">
                 </div>
             </div>
-            <div class="w-8/12 rounded-xl bg-white p-4 shadow">
+            <div class="w-full rounded-xl bg-white p-4 shadow md:w-8/12">
                 <p class="text-sm text-gray-600">
                     @foreach ($book->authors as $author)
                         {{ $author->name }}{{ $loop->last ? '' : ', ' }}
                     @endforeach
                 </p>
-                <div class="flex gap-3">
+                <div class="flex flex-col gap-3 md:flex-row">
                     <h2 class="text-xl font-bold text-slate-900">
                         {{ $book->title }}
                     </h2>
