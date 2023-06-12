@@ -99,7 +99,7 @@
 }
 .select2-container .select2-selection--single {
     /* Selection box itself */
-    @apply box-border cursor-pointer block select-none shadow border rounded-lg !important;
+    @apply box-border cursor-pointer block select-none shadow border rounded-lg border-gray-300 !important;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
@@ -300,7 +300,13 @@
 }
 
 .select2-container--default .select2-selection--multiple {
-    @apply p-1 min-h-full h-full border border-solid  rounded-lg shadow bg-white dark:bg-transparent focus:outline-none !important;
+    @apply p-1 min-h-full h-full border border-solid border-gray-300 rounded-lg bg-white dark:bg-transparent focus:outline-none !important;
+}
+
+.select2-container--default
+    .select2-selection--single
+    .select2-selection__clear {
+    height: 29px !important;
 }
 
 .select2-container--default

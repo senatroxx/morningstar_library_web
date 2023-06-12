@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +24,13 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get("/", [HomeController::class, "index"])->name("user.index");
+Route::group(['as' => 'user.'], function () {
+    Route::get("/", [HomeController::class, "index"])->name("index");
 
-Route::get('books', function () {
-    return view('user.book');
+    Route::prefix('books')->group(function () {
+        Route::get('/', [UserBookController::class, 'index'])->name('books.index');
+        Route::get('{book:slug}', [UserBookController::class, 'show'])->name('books.show');
+    });
 });
 
 Route::prefix("auth")->group(function () {
