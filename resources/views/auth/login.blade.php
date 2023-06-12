@@ -58,7 +58,8 @@
                             Login
                         </button>
 
-                        <a class="mt-2 text-right text-xs text-gray-600 hover:text-blue-600" href="#">
+                        <a class="mt-2 text-right text-xs text-gray-600 hover:text-blue-600"
+                            href="{{ route('forgot') }}">
                             Forgot Password?
                         </a>
 
