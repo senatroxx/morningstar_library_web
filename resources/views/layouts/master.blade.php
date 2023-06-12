@@ -29,6 +29,7 @@
     <script>
         const Dropdown = (dropdownId, buttonId, contentId, caretId) => {
             const dropdownButton = document.getElementById(buttonId);
+            if (!dropdownButton) return;
             const dropdownContent = document.getElementById(contentId);
             const caret = document.getElementById(caretId);
 
