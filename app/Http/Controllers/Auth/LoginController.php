@@ -5,15 +5,24 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
     public function show()
     {
+        SEOTools::webPage(
+            'Login',
+            'Login to explore your next favorite book!',
+            'website',
+            [Vite::asset('resources/images/library.png')]
+        );
+
         return view('auth.login');
     }
 

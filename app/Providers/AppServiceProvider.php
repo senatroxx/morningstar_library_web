@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\TwitterCard;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,6 +37,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        SEOTools::macro('webPage', function (string $title, string $description, string $type = 'webpage', array $images = []) {
+            SEOMeta::setTitle($title);
+            SEOMeta::setDescription($description);
+            SEOMeta::setCanonical(request()->url());
+            OpenGraph::setDescription($description);
+            OpenGraph::setTitle($title);
+            OpenGraph::setUrl(request()->url());
+            OpenGraph::addImages($images);
+            OpenGraph::addProperty('type', $type);
+            TwitterCard::setTitle($title);
+            TwitterCard::setSite('@morningstarLibrary');
+            TwitterCard::setDescription($description);
+            TwitterCard::setUrl(request()->url());
+            TwitterCard::setImages($images);
+            JsonLd::setTitle($title);
+            JsonLd::setDescription($description);
+            JsonLd::setType($type);
+            JsonLd::setUrl(request()->url());
+            JsonLd::addImage($images);
+        });
     }
 }
