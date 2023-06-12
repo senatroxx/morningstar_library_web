@@ -24,8 +24,13 @@
                         {{ $book->title }}
                     </h2>
                     <button
-                        class="inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-4 py-1 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85">
-                        Borrow now!
+                        class="modal-open inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-4 py-1 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85 disabled:cursor-not-allowed disabled:bg-gray-800 disabled:opacity-50"
+                        @disabled($book->quantity <= 0)>
+                        @if ($book->quantity <= 0)
+                            Out of Stock
+                        @else
+                            Borrow now!
+                        @endif
                     </button>
                 </div>
                 <ul class="inline-flex w-full px-1 pt-2" id="tabs">
@@ -94,6 +99,69 @@
             </div>
         </div>
     </div>
+
+    <div
+        class="modal pointer-events-none fixed left-0 top-0 z-sticky flex h-full w-full items-center justify-center opacity-0 transition-opacity duration-100 ease-in">
+
+        <div class="modal-overlay absolute h-full w-full bg-gray-900 opacity-50"></div>
+
+        <div class="modal-container z-50 mx-auto w-11/12 overflow-y-auto rounded bg-white shadow-lg md:max-w-lg">
+
+            <div
+                class="modal-close absolute right-0 top-0 z-50 mr-4 mt-4 flex cursor-pointer flex-col items-center text-sm text-white">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18">
+                    <path
+                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                    </path>
+                </svg>
+                <span class="text-sm">(Esc)</span>
+            </div>
+
+            <!-- Add margin if you want to see some of the overlay behind the modal-->
+            <div class="modal-content px-6 py-4 text-left">
+                <!--Title-->
+                <div class="flex items-center justify-between pb-3">
+                    <p class="text-xl font-bold text-slate-900">Do you want to borrow this book?</p>
+                    <div class="modal-close z-50 cursor-pointer">
+                        <svg class="fill-current text-slate-900" xmlns="http://www.w3.org/2000/svg" width="18"
+                            height="18" viewBox="0 0 18 18">
+                            <path
+                                d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+
+                <form action="{{ route('user.lends.store', $book->slug) }}" method="post">
+                    @csrf
+                    <!--Body-->
+                    <div class="my-2">
+                        <label class="text-xs text-gray-600" for="start_date">Start Date</label>
+                        <input
+                            class="block w-full appearance-none rounded-xl border border-solid px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 caret-blue-500 shadow-xl outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
+                            id="start_date" type="date" name="start_date">
+                    </div>
+
+                    <div class="my-2">
+                        <label class="text-xs text-gray-600" for="return_date">Return Date</label>
+                        <input
+                            class="block w-full appearance-none rounded-xl border border-solid px-3 py-2 text-sm font-normal leading-5.6 text-gray-700 caret-blue-500 shadow-xl outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:shadow-primary-outline focus:outline-none dark:bg-transparent dark:text-white"
+                            id="return_date" type="date" name="finish_date">
+                    </div>
+
+                    <!--Footer-->
+                    <div class="flex justify-end pt-2">
+                        <button
+                            class="modal-close mr-2 rounded-lg bg-transparent px-4 py-3 text-red-500 hover:bg-gray-100 hover:text-red-400">Cancel</button>
+                        <button
+                            class="inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-6 py-3 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85">Borrow</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -127,5 +195,43 @@
         });
 
         document.getElementById("default-tab").click();
+
+        var openmodal = document.querySelectorAll(".modal-open");
+        for (var i = 0; i < openmodal.length; i++) {
+            openmodal[i].addEventListener("click", function(event) {
+                event.preventDefault();
+                toggleModal();
+            });
+        }
+
+        const overlay = document.querySelector(".modal-overlay");
+        overlay.addEventListener("click", toggleModal);
+
+        var closemodal = document.querySelectorAll(".modal-close");
+        for (var i = 0; i < closemodal.length; i++) {
+            closemodal[i].addEventListener("click", toggleModal);
+        }
+
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            var isEscape = false;
+            if ("key" in evt) {
+                isEscape = evt.key === "Escape" || evt.key === "Esc";
+            } else {
+                isEscape = evt.keyCode === 27;
+            }
+            if (isEscape && document.body.classList.contains("modal-active")) {
+                toggleModal();
+            }
+        };
+
+        function toggleModal() {
+            const body = document.querySelector("body");
+            const modal = document.querySelector(".modal");
+            modal.classList.toggle("opacity-0");
+            modal.classList.toggle("pointer-events-none");
+            body.classList.toggle("modal-active");
+            body.classList.toggle("overflow-y-hidden");
+        }
     </script>
 @endsection

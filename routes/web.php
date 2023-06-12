@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\LendController as UserLendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,13 @@ Route::group(['as' => 'user.'], function () {
         Route::get('/', [UserBookController::class, 'index'])->name('books.index');
         Route::get('{book:slug}', [UserBookController::class, 'show'])->name('books.show');
     });
+
+    Route::prefix('lends')
+        ->middleware('auth:user,admin')
+        ->group(function () {
+            Route::post('/{book:slug}', [UserLendController::class, 'store'])->name('lends.store');
+        });
+
 });
 
 Route::prefix("auth")->group(function () {
