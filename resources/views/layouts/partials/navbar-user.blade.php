@@ -49,7 +49,7 @@
                                             </div>
                                         </li>
                                         <div class="my-1 w-full border border-gray-300"></div>
-                                        <li><a class="block" href="#">Profile</a></li>
+                                        <li><a class="block" href="{{ route('user.profile.index') }}">Profile</a></li>
                                         <li><a class="block" href="{{ route('user.lends.index') }}">Lends</a></li>
                                         <div class="my-1 w-full border border-gray-300"></div>
                                         <li>
@@ -87,7 +87,7 @@
                                         </li>
                                         <div class="my-1 w-full border border-gray-300"></div>
                                         <li><a class="block" href="{{ route('admin.index') }}">Dashboard</a></li>
-                                        <li><a class="block" href="#">Profile</a></li>
+                                        <li><a class="block" href="{{ route('user.profile.index') }}">Profile</a></li>
                                         <li><a class="block" href="{{ route('user.lends.index') }}">Lends</a></li>
                                         <div class="my-1 w-full border border-gray-300"></div>
                                         <li>
@@ -159,7 +159,7 @@
                                 </div>
                             </li>
 
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="{{ route('user.profile.index') }}">Profile</a></li>
                             <li><a href="{{ route('user.lends.index') }}">Lends</a></li>
                             <div class="w-full border border-gray-300"></div>
                             <li>
@@ -180,7 +180,7 @@
                                 </div>
                             </li>
                             <li><a href="{{ route('admin.index') }}">Dashboard</a></li>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="{{ route('user.profile.index') }}">Profile</a></li>
                             <li><a href="{{ route('user.lends.index') }}">Lends</a></li>
                             <div class="w-full border border-gray-300"></div>
                             <li>
