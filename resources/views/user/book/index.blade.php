@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div
-        class="relative isolate -mt-3 flex min-h-screen flex-col justify-center gap-6 bg-gradient-to-br from-blue-200 px-6 py-24 lg:px-10">
+    <div class="relative isolate -mt-3 flex min-h-screen flex-col gap-6 bg-gradient-to-br from-blue-200 px-6 py-24 lg:px-10">
         <form action="{{ route('user.books.index') }}" method="get">
             <div class="mx-auto flex w-full items-stretch md:w-2/5">
                 <div class="relative w-full rounded-l-lg shadow-none">
@@ -23,7 +22,7 @@
             </div>
         </form>
         <div class="flex flex-wrap justify-evenly gap-4">
-            @foreach ($books as $book)
+            @forelse ($books as $book)
                 <a href="{{ route('user.books.show', $book->slug) }}">
                     <div class="relative w-36 rounded bg-white shadow-md md:w-48">
                         <div class="absolute inset-0 z-0 h-44 w-full rounded-t bg-cover bg-center md:h-56"
@@ -45,7 +44,19 @@
                         </div>
                     </div>
                 </a>
-            @endforeach
+            @empty
+                <div class="flex flex-col items-center">
+                    <img class="mt-6 w-40" src="{{ Vite::asset('resources/images/notfound.png') }}" alt="No Result">
+                    <div class="mt-6 text-3xl font-bold">
+                        <h2
+                            class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text uppercase tracking-tighter text-transparent">
+                            Result Not Found
+                        </h2>
+                    </div>
+                    <span class="text-sm text-gray-600">We couldn't find what you searched for.</span>
+                    <span class="text-sm text-gray-600">Try searching again.</span>
+                </div>
+            @endforelse
         </div>
         {{ $books->onEachSide(1)->links('pagination::tailwind') }}
     </div>
