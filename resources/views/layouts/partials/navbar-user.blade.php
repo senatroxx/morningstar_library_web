@@ -4,7 +4,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="{{ route('user.index') }}">
-                        <img class="w-48" src="{{ Vite::asset('resources/images/logo.png') }}">
+                        <img class="w-48" src="{{ Vite::asset('resources/images/logo.png') }}" alt="Logo">
                     </a>
                 </div>
 
