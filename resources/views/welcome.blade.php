@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-between">
+        <div class="mx-auto flex max-w-[90rem] items-center justify-between">
             <div class="w-full">
                 <div class="text-5xl font-bold">
                     <h2 class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text pb-7 text-transparent">
@@ -65,19 +65,21 @@
             </div>
         </div>
 
-        <div class="text-2xl font-bold">
-            <h2 class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text pb-4 text-transparent">
-                Browse Categories
-            </h2>
-        </div>
-        <div>
-            <div class="owl-carousel owl-theme crl">
-                @foreach ($categories as $category)
-                    <a class="inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-6 py-3 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
-                        href="#">
-                        {{ $category->name }} ({{ $category->books_count }})
-                    </a>
-                @endforeach
+        <div class="mx-auto max-w-[90rem]">
+            <div class="text-2xl font-bold">
+                <h2 class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text pb-4 text-transparent">
+                    Browse Categories
+                </h2>
+            </div>
+            <div>
+                <div class="owl-carousel owl-theme crl">
+                    @foreach ($categories as $category)
+                        <a class="inline-block cursor-pointer rounded-lg bg-blue-600 bg-150 bg-x-25 px-6 py-3 align-middle text-xs font-bold uppercase leading-normal text-white shadow-xs transition-all ease-in hover:-translate-y-px hover:shadow-md active:opacity-85"
+                            href="#">
+                            {{ $category->name }} ({{ $category->books_count }})
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
@@ -85,7 +87,7 @@
 
     {{-- Search Book Section --}}
     <div class="min-h-screen bg-gradient-to-br from-blue-200 px-6 py-10 lg:px-10">
-        <div>
+        <div class="mx-auto max-w-[90rem]">
             <div class="text-2xl font-bold">
                 <h2 class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text pb-4 text-transparent">
                     Recently Added Books
@@ -117,7 +119,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="pt-10">
+        <div class="mx-auto max-w-[90rem] pt-10">
             <div class="text-2xl font-bold">
                 <h2 class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text pb-4 text-transparent">
                     Random picks for you
@@ -154,7 +156,7 @@
 
     {{-- User Registration Section --}}
     <div class="relative bg-gradient-to-tr from-blue-200 px-6 py-20 bg-blend-multiply lg:px-10">
-        <div class="rounded-xl bg-gradient-to-tr from-slate-800 to-slate-900 px-10 py-16">
+        <div class="mx-auto max-w-[90rem] rounded-xl bg-gradient-to-tr from-slate-800 to-slate-900 px-10 py-16">
             <div class="text-2xl font-bold">
                 <h2 class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text pb-4 text-transparent">
                     Join Our Growing Community
@@ -176,29 +178,31 @@
 
     {{-- Review Section --}}
     <div class="bg-gradient-to-br from-blue-200 px-6 py-20 bg-blend-multiply lg:px-10">
-        <div class="text-2xl font-bold">
-            <h2 class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text pb-4 text-center text-transparent">
-                What Our Readers Say
-            </h2>
-        </div>
-        <div class="owl-carousel owl-theme review">
-            <div class="max-w-72 md:max-w-xl lg:max-w-3xl">
-                <div class="m-4 block rounded-lg bg-gradient-to-tl from-sky-700 to-blue-800 p-6 shadow-lg">
-                    <div class="md:flex md:flex-row">
-                        <div class="mx-auto mb-6 flex w-36 items-center justify-center md:mx-0 md:w-96 lg:mb-0">
-                            <img class="rounded-full shadow-md dark:shadow-black/30" src="https://i.pravatar.cc/250?img=53"
-                                alt="woman avatar" />
-                        </div>
-                        <div class="md:ml-6">
-                            <p class="mb-2 text-xl font-semibold text-white">
-                                Anwar Jamaluddin
-                            </p>
-                            <p class="mb-6 font-light text-white">
-                                I absolutely love this online library! It's so convenient to browse through
-                                their extensive collection and borrow books with just a few clicks. The process
-                                is seamless, and I can enjoy reading my favorite titles without leaving my home.
-                                Highly recommended!
-                            </p>
+        <div class="mx-auto max-w-[90rem]">
+            <div class="text-2xl font-bold">
+                <h2 class="bg-gradient-to-tr from-blue-400 to-blue-600 bg-clip-text pb-4 text-center text-transparent">
+                    What Our Readers Say
+                </h2>
+            </div>
+            <div class="owl-carousel owl-theme review">
+                <div class="max-w-72 md:max-w-xl lg:max-w-3xl">
+                    <div class="m-4 block rounded-lg bg-gradient-to-tl from-sky-700 to-blue-800 p-6 shadow-lg">
+                        <div class="md:flex md:flex-row">
+                            <div class="mx-auto mb-6 flex w-36 items-center justify-center md:mx-0 md:w-96 lg:mb-0">
+                                <img class="rounded-full shadow-md dark:shadow-black/30"
+                                    src="https://i.pravatar.cc/250?img=53" alt="woman avatar" />
+                            </div>
+                            <div class="md:ml-6">
+                                <p class="mb-2 text-xl font-semibold text-white">
+                                    Anwar Jamaluddin
+                                </p>
+                                <p class="mb-6 font-light text-white">
+                                    I absolutely love this online library! It's so convenient to browse through
+                                    their extensive collection and borrow books with just a few clicks. The process
+                                    is seamless, and I can enjoy reading my favorite titles without leaving my home.
+                                    Highly recommended!
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
