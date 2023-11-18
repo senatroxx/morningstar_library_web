@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Helpers\Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -44,5 +45,15 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException  && $request->wantsJson()) {
+            return Response::status('failed')->code(404)
+                ->message('Not Found')->result();
+        }
+
+        return parent::render($request, $e);
     }
 }

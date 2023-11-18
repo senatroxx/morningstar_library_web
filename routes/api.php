@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\BookController as AdminBookController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\LendController;
 use App\Http\Controllers\Admin\PublisherController;
 use App\Http\Controllers\Admin\UserController;
-// use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\API\Admin\AuthorController as AdminAuthorController;
+// use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\API\Admin\BookController as AdminBookController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -37,10 +37,10 @@ Route::prefix('admin')
     ->group(function () {
         Route::prefix('books')->group(function () {
             Route::get('/', [AdminBookController::class, 'index']);
-            Route::get('/{book:slug}', [AdminBookController::class, 'show']);
+            Route::get('/{slug}', [AdminBookController::class, 'show']);
             Route::post('/', [AdminBookController::class, 'store']);
-            Route::put('/{book:slug}', [AdminBookController::class, 'update']);
-            Route::delete('/{book:slug}', [AdminBookController::class, 'destroy']);
+            Route::put('/{slug}', [AdminBookController::class, 'update']);
+            Route::delete('/{slug}', [AdminBookController::class, 'destroy']);
         });
 
         Route::prefix('categories')->group(function () {

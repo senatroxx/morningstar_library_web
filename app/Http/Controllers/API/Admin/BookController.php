@@ -1,95 +1,67 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\API\Admin;
 
+use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Book\StoreRequest;
 use App\Http\Requests\Admin\Book\UpdateRequest;
-use App\Models\Book;
+use App\Http\Resources\Admin\Book\BookCollection;
+use App\Http\Resources\Admin\Book\BookResource;
+use App\Http\Services\BookService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
-    public function index()
+    protected $service;
+
+    public function __construct(BookService $service)
     {
-        $books = Book::query();
-
-        if (request('q')) {
-            $books->where('title', 'LIKE', '%' . request('q') . '%');
-        }
-
-        $books = $books->paginate(10);
-
-        if (request()->expectsJson()) {
-            return response()->json($books);
-        }
-
-        return view('admin.book.index', ['books' => $books]);
+        $this->service = $service;
     }
 
-    public function create()
+    public function index(Request $request)
     {
-        return view('admin.book.create');
+        $books = $this->service->getBook($request->limit, $request->q);
+
+        return Response::status('success')
+            ->message('Books retrieved successfully')
+            ->result(new BookCollection($books));
+    }
+
+    public function show($slug)
+    {
+        $book = $this->service->getBookBySlug($slug);
+
+        return Response::status('success')
+            ->message('Book retrieved successfully')
+            ->result(new BookResource($book));
     }
 
     public function store(StoreRequest $request)
     {
-        $attributes = $request->validated();
+        $book = $this->service->createBook($request->validated());
 
-        $path = Storage::disk('google')->put('thumbnails', $request->file('thumbnail'));
-        $file = Storage::disk('google')->getAdapter()->getUrl($path);
-
-
-        $book = Book::create([
-            ...$attributes,
-            'thumbnail' => $file,
-            'thumbnail_path' => $path,
-        ]);
-
-        $book->categories()->sync($attributes['categories_id']);
-        $book->authors()->sync($attributes['authors_id']);
-
-        return redirect()->route('admin.books.index')->with('success', 'Book created successfully');
+        return Response::status('success')
+            ->message('Book created successfully')
+            ->result(new BookResource($book));
     }
 
-    public function edit(Book $book)
+    public function update($slug, UpdateRequest $request)
     {
-        $book->load(['authors', 'categories', 'publisher']);
+        $this->service->updateBook($slug, $request->validated());
 
-        return view('admin.book.edit', ['book' => $book]);
+        return Response::status('success')
+            ->message('Book updated successfully')
+            ->result();
     }
 
-    public function update(Book $book, UpdateRequest $request)
+    public function destroy($slug)
     {
-        $attributes = $request->validated();
+        $this->service->deleteBook($slug);
 
-        if ($request->hasFile('thumbnail')) {
-            if ($book->thumbnail_path) {
-                Storage::disk('google')->delete($book->thumbnail_path);
-            }
-            $path = Storage::disk('google')->put('thumbnails', $request->file('thumbnail'));
-            $file = Storage::disk('google')->getAdapter()->getUrl($path);
-            $attributes['thumbnail'] = $file;
-            $attributes['thumbnail_path'] = $path;
-        }
-
-        $book->update($attributes);
-
-        $book->categories()->sync($attributes['categories_id']);
-        $book->authors()->sync($attributes['authors_id']);
-
-        return redirect()->route('admin.books.index')->with('success', 'Book updated successfully');
-    }
-
-    public function destroy(Book $book)
-    {
-        if ($book->thumbnail_path) {
-            Storage::disk('google')->delete($book->thumbnail_path);
-        }
-
-        $book->delete();
-
-        return redirect()->route('admin.books.index')->with('success', 'Book deleted successfully');
+        return Response::status('success')
+            ->message('Book deleted successfully')
+            ->result();
     }
 }
