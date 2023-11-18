@@ -14,14 +14,20 @@ class EloquentAuthorRepository implements AuthorRepository
         $this->model = $model;
     }
 
-    public function getAuthor()
+    public function getAuthor($limit = 10, $q = null)
     {
-        return $this->model->paginate(10);
+        $author = $this->model->query();
+
+        if ($q) {
+            $author = $author->like('name', $q);
+        }
+
+        return $author->paginate($limit);
     }
 
-    public function getAuthorById($id)
+    public function getAuthorBySlug($slug)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->where('slug', $slug)->firstOrFail();
     }
 
     public function createAuthor(array $attributes = [])
@@ -29,13 +35,13 @@ class EloquentAuthorRepository implements AuthorRepository
         return $this->model->create($attributes);
     }
 
-    public function updateAuthor($id, array $attributes = [])
+    public function updateAuthor($slug, array $attributes = [])
     {
-        return $this->model->findOrFail($id)->update($attributes);
+        return $this->getAuthorBySlug($slug)->update($attributes);
     }
 
-    public function deleteAuthor($id)
+    public function deleteAuthor($slug)
     {
-        return $this->model->findOrFail($id)->delete();
+        return $this->getAuthorBySlug($slug)->delete();
     }
 }
