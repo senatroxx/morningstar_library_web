@@ -2,73 +2,60 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
-use App\Models\Role;
+use App\Http\Resources\Admin\User\UserCollection;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    protected $service;
+
+    public function __construct(UserService $service)
     {
-        $users = User::with('role')->when($request->get('q'), function ($users) use ($request) {
-            return $users->where('name', 'LIKE', '%' . $request->get('q') . '%');
-        })->paginate(10);
-
-        if ($request->wantsJson()) {
-            return response()->json($users);
-        }
-
-        return view('admin.user.index', compact('users'));
+        $this->service = $service;
     }
 
-    public function create()
+    public function index(Request $request)
     {
-        $roles = Role::all();
+        $users = $this->service->getUser($request->limit, $request->q);
 
-        return view('admin.user.create', compact('roles'));
+        return Response::status('success')
+            ->message('User retrieved successfully')
+            ->result(new UserCollection($users));
     }
 
     public function store(StoreRequest $request)
     {
         $attributes = $request->validated();
 
-        User::create([
-            ...$attributes,
-            'password' => bcrypt($attributes['password']),
-        ]);
+        $this->service->createUser($attributes);
 
-        return redirect()->route('admin.users.index')->with('success', 'User created successfully');
-    }
-
-    public function edit(User $user)
-    {
-        $roles = Role::all();
-
-        return view('admin.user.edit', compact('user', 'roles'));
+        return Response::status('success')
+            ->message('User created successfully')
+            ->result();
     }
 
     public function update(UpdateRequest $request, User $user)
     {
         $attributes = $request->validated();
 
-        if ($attributes['password'] !== null) {
-            $attributes['password'] = bcrypt($attributes['password']);
-        } else {
-            unset($attributes['password']);
-        }
+        $this->service->updateUser($user->id, $attributes);
 
-        $user->update($attributes);
-
-        return redirect()->route('admin.users.index')->with('success', 'User updated successfully');
+        return Response::status('success')
+            ->message('User updated successfully')
+            ->result();
     }
 
     public function destroy(User $user)
     {
-        $user->delete();
+        $this->service->deleteUser($user->id);
 
-        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
+        return Response::status('success')
+            ->message('User deleted successfully')
+            ->result();
     }
 }
