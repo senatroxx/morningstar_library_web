@@ -86,18 +86,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:admin
         Route::get('/', [BookController::class, 'index'])->name('books.index');
         Route::get('/create', [BookController::class, 'create'])->name('books.create');
         Route::post('/', [BookController::class, 'store'])->name('books.store');
-        Route::get('/{book:slug}/edit', [BookController::class, 'edit'])->name('books.edit');
-        Route::put('/{book:slug}', [BookController::class, 'update'])->name('books.update');
-        Route::delete('/{book:slug}', [BookController::class, 'destroy'])->name('books.destroy');
+        Route::get('/{slug}/edit', [BookController::class, 'edit'])->name('books.edit');
+        Route::put('/{slug}', [BookController::class, 'update'])->name('books.update');
+        Route::delete('/{slug}', [BookController::class, 'destroy'])->name('books.destroy');
     });
 
     Route::prefix('authors')->group(function () {
         Route::get('/', [AuthorController::class, 'index'])->name('authors.index');
         Route::get('/create', [AuthorController::class, 'create'])->name('authors.create');
         Route::post('/', [AuthorController::class, 'store'])->name('authors.store');
-        Route::get('/{author:slug}/edit', [AuthorController::class, 'edit'])->name('authors.edit');
-        Route::put('/{author:slug}', [AuthorController::class, 'update'])->name('authors.update');
-        Route::delete('/{author:slug}', [AuthorController::class, 'destroy'])->name('authors.destroy');
+        Route::get('/{slug}/edit', [AuthorController::class, 'edit'])->name('authors.edit');
+        Route::put('/{slug}', [AuthorController::class, 'update'])->name('authors.update');
+        Route::delete('/{slug}', [AuthorController::class, 'destroy'])->name('authors.destroy');
     });
 
     Route::prefix('categories')->group(function () {

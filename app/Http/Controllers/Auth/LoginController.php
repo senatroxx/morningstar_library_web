@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Services\AuthService;
 use App\Models\User;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
@@ -14,6 +15,13 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    protected $service;
+
+    public function __construct(AuthService $service)
+    {
+        $this->service = $service;
+    }
+
     public function show()
     {
         SEOTools::webPage(
@@ -30,23 +38,25 @@ class LoginController extends Controller
     {
         $attributes = $request->validated();
 
-        $user = User::with('role')->where('email', $attributes['email'])->first();
+        // $user = User::with('role')->where('email', $attributes['email'])->first();
 
-        if (!$user || !Hash::check($attributes['password'], $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => 'The provided credentials are incorrect.',
-            ]);
-        }
+        // if (!$user || !Hash::check($attributes['password'], $user->password)) {
+        //     throw ValidationException::withMessages([
+        //         'email' => 'The provided credentials are incorrect.',
+        //     ]);
+        // }
 
-        $role = $user->role->name;
+        // $role = $user->role->name;
 
-        if (Auth::guard($role)->attempt($attributes)) {
-            $request->session()->regenerate();
+        // if (Auth::guard($role)->attempt($attributes)) {
+        //     $request->session()->regenerate();
 
-            return redirect()->intended(route("$role.index"));
-        } else {
-            throw ValidationException::withMessages(['email' => 'The provided credentials are incorrect.']);
-        }
+        //     return redirect()->intended(route("$role.index"));
+        // } else {
+        //     throw ValidationException::withMessages(['email' => 'The provided credentials are incorrect.']);
+        // }
+
+        return $this->service->login($attributes);
     }
 
     public function logout(Request $request)

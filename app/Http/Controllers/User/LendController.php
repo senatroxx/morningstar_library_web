@@ -4,14 +4,29 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Lend\LendRequest;
+use App\Http\Services\LendService;
 use App\Models\Book;
 use App\Models\Lend;
+use Illuminate\Support\Facades\Auth;
 
 class LendController extends Controller
 {
+    protected $user;
+    protected $service;
+
+    public function __construct(LendService $service)
+    {
+        $this->middleware(function ($request, $next) {
+            $this->user = auth()->user();
+
+            return $next($request);
+        });
+        $this->service = $service;
+    }
+
     public function index()
     {
-        $lends = auth()->user()->lends()->with('book')->latest()->paginate(10);
+        $lends = $this->service->getLend($this->user->id);
 
         return view('user.lends.index', compact('lends'));
     }
@@ -20,17 +35,10 @@ class LendController extends Controller
     {
         $attributes = $request->validated();
 
-        if ($book->quantity < 1) {
-            return redirect()->back()->with('error', 'Book is out of stock');
-        }
-
-        $book->decrement('quantity');
-
-        Lend::create([
+        $this->service->createLend([
             ...$attributes,
-            'returned' => false,
-            'user_id' => auth()->id(),
-            'book_id' => $book->id,
+            'book_slug' => $book->slug,
+            'user_id' => $this->user->id,
         ]);
 
         return redirect()->back()->with('success', 'Book borrowed successfully');

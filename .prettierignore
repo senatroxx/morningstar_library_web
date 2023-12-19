@@ -1,0 +1,7 @@
+# Ignore all php files:
+**/*.php
+
+**/.git
+**/.svn
+**/.hg
+**/node_modules

@@ -5,17 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
+use App\Http\Services\UserService;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    protected $service;
+
+    public function __construct(UserService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index(Request $request)
     {
-        $users = User::with('role')->when($request->get('q'), function ($users) use ($request) {
-            return $users->where('name', 'LIKE', '%' . $request->get('q') . '%');
-        })->paginate(10);
+        $users = $this->service->getUser($request->limit, $request->q);
 
         if ($request->wantsJson()) {
             return response()->json($users);
@@ -35,10 +41,7 @@ class UserController extends Controller
     {
         $attributes = $request->validated();
 
-        User::create([
-            ...$attributes,
-            'password' => bcrypt($attributes['password']),
-        ]);
+        $this->service->createUser($attributes);
 
         return redirect()->route('admin.users.index')->with('success', 'User created successfully');
     }
@@ -54,20 +57,14 @@ class UserController extends Controller
     {
         $attributes = $request->validated();
 
-        if ($attributes['password'] !== null) {
-            $attributes['password'] = bcrypt($attributes['password']);
-        } else {
-            unset($attributes['password']);
-        }
-
-        $user->update($attributes);
+        $this->service->updateUser($user->id, $attributes);
 
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully');
     }
 
     public function destroy(User $user)
     {
-        $user->delete();
+        $this->service->deleteUser($user->id);
 
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
     }
