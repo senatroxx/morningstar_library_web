@@ -16,13 +16,20 @@ class EloquentBookRepository implements BookRepository
 
     public function getBook($limit = 10, $q = null)
     {
-        $author = $this->model->query();
+        $book = $this->model->query();
 
         if ($q) {
-            $author = $author->like('name', $q);
+            $book = $book->like('title', $q);
         }
 
-        return $author->paginate($limit);
+        $book->orderBy('id', 'desc');
+
+        return $book->paginate($limit);
+    }
+
+    public function getBookInRandomOrder($limit = 10)
+    {
+        return $this->model->inRandomOrder()->take($limit)->get();
     }
 
     public function getBookBySlug($slug)

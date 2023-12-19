@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\API\User;
 
+use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Lend\LendRequest;
+use App\Http\Resources\User\Lend\LendCollection;
 use App\Http\Services\LendService;
 use App\Models\Book;
 use App\Models\Lend;
-use Illuminate\Support\Facades\Auth;
 
 class LendController extends Controller
 {
@@ -16,11 +17,7 @@ class LendController extends Controller
 
     public function __construct(LendService $service)
     {
-        $this->middleware(function ($request, $next) {
-            $this->user = auth()->user();
-
-            return $next($request);
-        });
+        $this->user = auth('api')->user();
         $this->service = $service;
     }
 
@@ -28,7 +25,9 @@ class LendController extends Controller
     {
         $lends = $this->service->getLend($this->user->id);
 
-        return view('user.lends.index', compact('lends'));
+        return Response::status('success')
+            ->message('Lends retrieved successfully')
+            ->result(new LendCollection($lends));
     }
 
     public function store(Book $book, LendRequest $request)
@@ -41,6 +40,8 @@ class LendController extends Controller
             'user_id' => $this->user->id,
         ]);
 
-        return redirect()->back()->with('success', 'Book borrowed successfully');
+        return Response::status('success')
+            ->message('Book borrowed successfully')
+            ->result();
     }
 }

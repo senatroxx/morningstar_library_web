@@ -45,4 +45,23 @@ class UserService
     {
         return $this->repository->deleteUser($id);
     }
+
+    function changePassword($id, array $attributes = [])
+    {
+        $user = $this->repository->getUserById($id);
+
+        if (!Hash::check($attributes['old_password'], $user->password)) {
+            if (request()->expectsJson()) {
+                return redirect()->back()->withErrors(['old_password' => 'The old password is incorrect']);
+            }
+            return Response::status('failed')
+                ->code(401)
+                ->message('Current Password is Incorrect.')
+                ->result();
+        }
+
+        return $this->repository->updateUser($id, [
+            'password' => bcrypt($attributes['password']),
+        ]);
+    }
 }

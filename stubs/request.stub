@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Helpers\FormRequest;
 
 class {{ class }} extends FormRequest
 {

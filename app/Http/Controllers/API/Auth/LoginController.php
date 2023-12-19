@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
@@ -22,25 +22,13 @@ class LoginController extends Controller
         $this->service = $service;
     }
 
-    public function show()
-    {
-        SEOTools::webPage(
-            'Login',
-            'Login to explore your next favorite book!',
-            'website',
-            [Vite::asset('resources/images/library.png')]
-        );
-
-        return view('auth.login');
-    }
-
     public function login(LoginRequest $request)
     {
         $attributes = $request->validated();
 
         // $user = User::with('role')->where('email', $attributes['email'])->first();
 
-        // if (!$user || !Hash::check($attributes['password'], $user->password)) {
+        // if (! $user || ! Hash::check($attributes['password'], $user->password)) {
         //     throw ValidationException::withMessages([
         //         'email' => 'The provided credentials are incorrect.',
         //     ]);
@@ -57,15 +45,5 @@ class LoginController extends Controller
         // }
 
         return $this->service->login($attributes);
-    }
-
-    public function logout(Request $request)
-    {
-        Auth::logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('user.index');
     }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests\User\Lend;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Helpers\FormRequest;
 
 class LendRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize() : bool
     {
         return true;
     }
@@ -19,7 +19,7 @@ class LendRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
      */
-    public function rules(): array
+    public function rules() : array
     {
         return [
             'start_date' => 'required|date',

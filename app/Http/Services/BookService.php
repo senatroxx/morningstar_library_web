@@ -19,9 +19,25 @@ class BookService
         return $this->repository->getBook($limit, $q);
     }
 
-    public function getBookBySlug($slug)
+    public function getBookInRandomOrder($limit = 10)
     {
-        return $this->repository->getBookBySlug($slug);
+        return $this->repository->getBookInRandomOrder($limit);
+    }
+
+    public function getBookBySlug($slug, $format = false)
+    {
+        $book = $this->repository->getBookBySlug($slug);
+
+        if ($format) {
+            $descriptionParts = explode('Detail', $book->description);
+            if (count($descriptionParts) > 1) {
+                array_pop($descriptionParts);
+                $join = implode('Detail', $descriptionParts);
+                $book->description = nl2br($join);
+            }
+        }
+
+        return $book;
     }
 
     public function createBook(array $attributes = [])

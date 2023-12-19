@@ -32,6 +32,11 @@ class EloquentUserRepository implements UserRepository
         return $this->model->with('role')->where('id', $id)->firstOrFail();
     }
 
+    public function getUserByEmail($email)
+    {
+        return $this->model->where('email', $email)->firstOrFail();
+    }
+
     public function createUser(array $attributes = [])
     {
         $user = $this->model->create($attributes);

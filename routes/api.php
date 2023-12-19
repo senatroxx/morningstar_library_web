@@ -1,17 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
-use App\Http\Controllers\Admin\LendController;
-use App\Http\Controllers\Admin\PublisherController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\API\Admin\AuthorController as AdminAuthorController;
 // use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\API\Admin\BookController as AdminBookController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\User\BookController;
-use App\Http\Controllers\User\LendController as UserLendController;
+use App\Http\Controllers\API\Auth\LoginController;
+use App\Http\Controllers\API\Auth\PasswordController;
+use App\Http\Controllers\API\Auth\RegisterController;
+use App\Http\Controllers\API\User\BookController;
+use App\Http\Controllers\API\User\HomeController;
+use App\Http\Controllers\API\User\LendController as UserLendController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
@@ -23,84 +18,12 @@ Route::prefix('auth')->group(function () {
             Route::post('reset', [PasswordController::class, 'reset']);
         });
     });
-    Route::middleware('auth:api')->group(function () {
-        Route::post('logout', [LoginController::class, 'logout']);
-    });
 });
-
-/**
- * Admin routes
- *
- */
-Route::prefix('admin')
-// ->middleware(['auth:api', 'scope:admin'])
-    ->group(function () {
-        Route::prefix('books')->group(function () {
-            Route::get('/', [AdminBookController::class, 'index']);
-            Route::get('/{slug}', [AdminBookController::class, 'show']);
-            Route::post('/', [AdminBookController::class, 'store']);
-            Route::put('/{slug}', [AdminBookController::class, 'update']);
-            Route::delete('/{slug}', [AdminBookController::class, 'destroy']);
-        });
-
-        Route::prefix('categories')->group(function () {
-            Route::get('/', [AdminCategoryController::class, 'index']);
-            Route::get('/search/{query}', [AdminCategoryController::class, 'search']);
-            Route::get('/{category:slug}', [AdminCategoryController::class, 'show']);
-            Route::post('/', [AdminCategoryController::class, 'store']);
-            Route::put('/{category:slug}', [AdminCategoryController::class, 'update']);
-            Route::delete('/{category:slug}', [AdminCategoryController::class, 'destroy']);
-        });
-
-        Route::prefix('authors')->group(function () {
-            Route::get('/', [AdminAuthorController::class, 'index']);
-            Route::get('/{slug}', [AdminAuthorController::class, 'show']);
-            Route::post('/', [AdminAuthorController::class, 'store']);
-            Route::put('/{slug}', [AdminAuthorController::class, 'update']);
-            Route::delete('/{slug}', [AdminAuthorController::class, 'destroy']);
-        });
-
-        Route::prefix('publishers')->group(function () {
-            Route::get('/', [PublisherController::class, 'index']);
-            Route::get('/search/{query}', [PublisherController::class, 'search']);
-            Route::get('/{publisher:slug}', [PublisherController::class, 'show']);
-            Route::post('/', [PublisherController::class, 'store']);
-            Route::put('/{publisher:slug}', [PublisherController::class, 'update']);
-            Route::delete('/{publisher:slug}', [PublisherController::class, 'destroy']);
-        });
-
-        Route::prefix('users')->group(function () {
-            Route::get('/', [UserController::class, 'index']);
-            Route::get('/{user}', [UserController::class, 'show']);
-            Route::post('/', [UserController::class, 'store']);
-            Route::put('/{user}', [UserController::class, 'update']);
-            Route::delete('/{user}', [UserController::class, 'destroy']);
-        });
-
-        Route::prefix('lends')->group(function () {
-            Route::get('/', [LendController::class, 'index']);
-            Route::get('/{lend}', [LendController::class, 'show']);
-            Route::post('/{book}', [LendController::class, 'store']);
-            Route::put('/{lend}', [LendController::class, 'update']);
-            Route::delete('/{lend}', [LendController::class, 'destroy']);
-            Route::post('/return/{lend}', [LendController::class, 'returnBook']);
-        });
-
-        // Route::prefix('roles')->group(function () {
-        //     Route::get('/', [RoleController::class, 'index']);
-        // });
-
-    });
 
 /**
  * User routes
  *
  */
-Route::prefix('books')->group(function () {
-    Route::get('/', [BookController::class, 'index']);
-    Route::get('/{book:slug}', [BookController::class, 'show']);
-    Route::get('/search/{query}', [BookController::class, 'search']);
-});
 
 // Route::prefix('categories')->group(function () {
 //     Route::get('/', [CategoryController::class, 'index']);
@@ -111,12 +34,21 @@ Route::prefix('books')->group(function () {
 //     Route::get('/', [AuthorController::class, 'index']);
 //     Route::get('/{author:slug}', [AuthorController::class, 'show']);
 // });
+Route::prefix('my')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
 
-Route::prefix('lends')
-    ->middleware(['auth:api', 'scope:user,admin'])
-    ->group(function () {
-        Route::get('/', [UserLendController::class, 'index']);
-        Route::get('/{lend}', [UserLendController::class, 'show']);
-        Route::post('/{book:slug}', [UserLendController::class, 'store']);
-        Route::put('/{lend}', [UserLendController::class, 'update']);
+    Route::prefix('books')->group(function () {
+        Route::get('/', [BookController::class, 'index']);
+        Route::get('/{book:slug}', [BookController::class, 'show']);
+        Route::get('/search/{query}', [BookController::class, 'search']);
     });
+
+    Route::prefix('lends')
+        ->middleware(['auth:api', 'scope:user,admin'])
+        ->group(function () {
+            Route::get('/', [UserLendController::class, 'index']);
+            Route::get('/{lend}', [UserLendController::class, 'show']);
+            Route::post('/{book:slug}', [UserLendController::class, 'store']);
+            Route::put('/{lend}', [UserLendController::class, 'update']);
+        });
+});
