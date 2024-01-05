@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
             BookSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            MembershipSeeder::class,
+            ProvinceSeeder::class,
+            CitySeeder::class,
+            UserAddressSeeder::class,
         ]);
     }
 }

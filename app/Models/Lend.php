@@ -12,9 +12,15 @@ class Lend extends Model
     protected $fillable = [
         'start_date',
         'finish_date',
+        'shipping_courier',
+        'return_courier',
+        'shipping_receipt',
+        'return_receipt',
+        'status',
+        'total_fine',
         'returned',
         'user_id',
-        'book_id',
+        'user_address_id',
     ];
 
     // cast to date
@@ -32,9 +38,18 @@ class Lend extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function book()
+    public function lendReports()
     {
-        return $this->belongsTo(Book::class);
+        return $this->hasMany(LendReport::class);
     }
 
+    public function books()
+    {
+        return $this->belongsToMany(Book::class, 'lend_items');
+    }
+
+    public function userAddress()
+    {
+        return $this->belongsTo(UserAddress::class);
+    }
 }

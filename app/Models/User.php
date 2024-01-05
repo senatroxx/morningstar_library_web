@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
-    protected $with = ['role'];
+    protected $with = ['role', 'membership'];
 
     /**
      * The attributes that are mass assignable.
@@ -23,9 +23,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'address',
         'role_id',
         'phone',
+        'image',
+        'balance',
+        'active',
+        'membership_id',
         'email_verified_at',
     ];
 
@@ -46,5 +49,25 @@ class User extends Authenticatable
     public function lends()
     {
         return $this->hasMany(Lend::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function membership()
+    {
+        return $this->belongsTo(Membership::class);
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(UserAddress::class);
+    }
+
+    public function scopePrimaryAddress()
+    {
+        return $this->addresses()->where('is_primary', true)->first();
     }
 }

@@ -24,6 +24,11 @@ class LendRequest extends FormRequest
         return [
             'start_date' => 'required|date',
             'finish_date' => 'required|date',
+            'books' => 'required|array',
+            'books.*' => 'required|exists:books,id|min:1',
+            'user_address_id' => 'required|exists:user_addresses,id',
+            'courier' => 'required|in:jne,tiki,pos',
+            'courier_service' => 'required',
         ];
     }
 }

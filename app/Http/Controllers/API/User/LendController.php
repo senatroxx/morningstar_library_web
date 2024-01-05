@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\User;
 use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Lend\LendRequest;
+use App\Http\Requests\User\Lend\ReturnRequest;
 use App\Http\Resources\User\Lend\LendCollection;
 use App\Http\Services\LendService;
 use App\Models\Book;
@@ -17,7 +18,12 @@ class LendController extends Controller
 
     public function __construct(LendService $service)
     {
-        $this->user = auth('api')->user();
+        $this->middleware(function ($request, $next) {
+            $this->user = auth()->user();
+
+            return $next($request);
+        });
+
         $this->service = $service;
     }
 
@@ -30,18 +36,63 @@ class LendController extends Controller
             ->result(new LendCollection($lends));
     }
 
-    public function store(Book $book, LendRequest $request)
+    public function store(LendRequest $request)
     {
         $attributes = $request->validated();
 
-        $this->service->createLend([
-            ...$attributes,
-            'book_slug' => $book->slug,
-            'user_id' => $this->user->id,
+        try {
+            $lend = $this->service->createLend([
+                ...$attributes,
+                'user_id' => $this->user->id,
+            ]);
+
+            return Response::status('success')
+                ->message('Book borrowed successfully')
+                ->result($lend);
+        } catch (\Throwable $e) {
+
+            return Response::status('failed')
+                ->code($e->getCode())
+                ->message($e->getMessage())
+                ->result();
+        }
+    }
+
+    public function cancel(Lend $lend)
+    {
+        if ($lend->status == "PENDING") {
+            $lend->update([
+                'status' => 'CANCELED'
+            ]);
+        }
+
+        return Response::status('success')
+            ->message('Book lend canceled successfully')
+            ->result();
+    }
+
+    public function recieved(Lend $lend)
+    {
+        $lend->update([
+            'status' => 'RECIEVED'
         ]);
 
         return Response::status('success')
-            ->message('Book borrowed successfully')
+            ->message('Book recieved successfully')
+            ->result();
+    }
+
+    public function returnBook(Lend $lend, ReturnRequest $request)
+    {
+        $attributes = $request->validated();
+
+        $lend->update([
+            ...$attributes,
+            'status' => 'RETURNING',
+        ]);
+
+        return Response::status('success')
+            ->message('Book returned successfully')
             ->result();
     }
 }

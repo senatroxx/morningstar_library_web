@@ -22,5 +22,10 @@ class UserSeeder extends Seeder
             'email' => 'admin@morningstar.com',
             'role_id' => Role::where('name', 'admin')->first()->id,
         ]);
+        User::factory()->count(1)->create([
+            'name' => 'Athhar Kautsar',
+            'email' => 'AthharKautsar14@gmail.com',
+            'role_id' => Role::where('name', 'admin')->first()->id,
+        ]);
     }
 }

@@ -27,9 +27,31 @@ class EloquentBookRepository implements BookRepository
         return $book->paginate($limit);
     }
 
+    public function getBookById($id)
+    {
+        return $this->model->findOrFail($id);
+    }
+
     public function getBookInRandomOrder($limit = 10)
     {
         return $this->model->inRandomOrder()->take($limit)->get();
+    }
+
+    public function getBookByReleaseDate(int $limit = 10)
+    {
+        return $this->model
+            ->orderBy('published_at', 'desc')
+            ->paginate($limit);
+    }
+
+    public function getBookByCategory($categorySlug, $limit = 10)
+    {
+        return $this->model
+            ->whereHas('categories', function ($query) use ($categorySlug) {
+                $query->where('slug', 'like', "%$categorySlug%");
+            })
+            ->orderBy('published_at', 'desc')
+            ->paginate($limit);
     }
 
     public function getBookBySlug($slug)

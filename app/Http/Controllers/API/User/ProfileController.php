@@ -16,7 +16,11 @@ class ProfileController extends Controller
 
     public function __construct(UserService $service)
     {
-        $this->user = auth('api')->user();
+        $this->middleware(function ($request, $next) {
+            $this->user = auth()->user();
+
+            return $next($request);
+        });
         $this->service = $service;
     }
 

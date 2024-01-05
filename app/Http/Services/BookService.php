@@ -24,6 +24,16 @@ class BookService
         return $this->repository->getBookInRandomOrder($limit);
     }
 
+    public function getBookByReleaseDate($limit = 10)
+    {
+        return $this->repository->getBookByReleaseDate($limit);
+    }
+
+    public function getBookByCategory($categorySlug, $limit = 10)
+    {
+        return $this->repository->getBookByCategory($categorySlug, $limit);
+    }
+
     public function getBookBySlug($slug, $format = false)
     {
         $book = $this->repository->getBookBySlug($slug);

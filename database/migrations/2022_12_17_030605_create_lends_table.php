@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -17,8 +16,13 @@ return new class extends Migration
             $table->id();
             $table->date('start_date');
             $table->date('finish_date');
+            $table->string('shipping_courier')->nullable();
+            $table->string('return_courier')->nullable();
+            $table->string('shipping_receipt')->nullable();
+            $table->string('return_receipt')->nullable();
+            $table->string('status');
+            $table->float('total_fine')->default(0);
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('book_id')->constrained();
             $table->timestamps();
         });
     }
